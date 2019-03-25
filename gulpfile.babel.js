@@ -6,8 +6,7 @@ import gulp from "gulp";
 import gulpif from "gulp-if";
 import browsersync from "browser-sync";
 import autoprefixer from "gulp-autoprefixer";
-import pug from "gulp-pug";
-import pugbem from "gulp-pugbem";
+import nunjucksRender from "gulp-nunjucks-render";
 import sass from "gulp-sass";
 import groupmediaqueries from "gulp-group-css-media-queries";
 import mincss from "gulp-clean-css";
@@ -35,19 +34,17 @@ const webpackConfig = require("./webpack.config.js"),
 	paths = {
 		views: {
 			src: [
-				"./src/views/index.pug",
-				"./src/pages/*.pug"
+				"./src/views/pages/**/*.njk"
 			],
 			dist: "./dist/",
 			watch: [
-				"./src/blocks/**/*.pug",
-				"./src/pages/**/*.pug",
-				"./src/views/**/*.pug"
-			]
+				"./src/blocks/**/*.njk",
+				"./src/views/**/*.njk"
+			],
 		},
 		styles: {
 			src: "./src/styles/main.scss",
-			dist: "./dist/styles/",
+			dist: "./dist/assets/styles/",
 			watch: [
 				"./src/blocks/**/*.scss",
 				"./src/styles/**/*.scss"
@@ -55,7 +52,7 @@ const webpackConfig = require("./webpack.config.js"),
 		},
 		scripts: {
 			src: "./src/js/index.js",
-			dist: "./dist/js/",
+			dist: "./dist/assets/js/",
 			watch: [
 				"./src/blocks/**/*.js",
 				"./src/js/**/*.js"
@@ -67,22 +64,22 @@ const webpackConfig = require("./webpack.config.js"),
 				"!./src/img/svg/*.svg",
 				"!./src/img/favicon.{jpg,jpeg,png,gif}"
 			],
-			dist: "./dist/img/",
+			dist: "./dist/assets/img/",
 			watch: "./src/img/**/*.{jpg,jpeg,png,gif,svg}"
 		},
 		webp: {
 			src: "./src/img/**/*_webp.{jpg,jpeg,png}",
-			dist: "./dist/img/",
+			dist: "./dist/assets/img/",
 			watch: "./src/img/**/*_webp.{jpg,jpeg,png}"
 		},
 		fonts: {
 			src: "./src/fonts/**/*.{ttf,otf,woff,woff2}",
-			dist: "./dist/fonts/",
+			dist: "./dist/assets/fonts/",
 			watch: "./src/fonts/**/*.{ttf,otf,woff,woff2}"
 		},
 		favicons: {
 			src: "./src/img/favicon.{jpg,jpeg,png,gif}",
-			dist: "./dist/img/favicons/",
+			dist: "./dist/assets/img/favicons/",
 		},
 		server_config: {
 			src: "./src/.htaccess",
@@ -154,10 +151,10 @@ export const smartGrid = cb => {
 };
 
 export const views = () => gulp.src(paths.views.src)
-	.pipe(pug({
-		plugins: [pugbem],
-		pretty: true
+	.pipe(nunjucksRender({
+		path: "./src/",
 	}))
+
 	.pipe(gulpif(production, replace("main.css", "main.min.css")))
 	.pipe(gulpif(production, replace("main.js", "main.min.js")))
 	.pipe(gulp.dest(paths.views.dist))

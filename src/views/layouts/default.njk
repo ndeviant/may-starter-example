@@ -1,0 +1,20 @@
+{% import "../utils/macro.njk" as macro %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include "../includes/head.njk" %}
+    
+    {% block title %}
+      <title>Nunjack's starter</title> 
+    {% endblock %}
+
+    {% block head %} {% endblock %}
+  </head>
+  <body>
+    {# You write code for this content block in another file #}
+    {% block content %} {% endblock %}
+
+    {% include "../includes/scripts.njk" %}
+  </body>
+</html>

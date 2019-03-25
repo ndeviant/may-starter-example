@@ -4,9 +4,9 @@ module.exports = {
 		"bem-tools": {
 			plugins: {
 				create: {
-					techs: ["pug", "scss", "js"],
+					techs: ["njk", "scss", "js"],
 					levels: {
-						"src/blocks/modules": {
+						"src/blocks": {
 							default: true
 						}
 					}
