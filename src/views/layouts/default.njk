@@ -12,8 +12,14 @@
     {% block head %} {% endblock %}
   </head>
   <body>
-    {# You write code for this content block in another file #}
-    {% block content %} {% endblock %}
+    <div class="wrapper">
+      {% include "blocks/header/header.njk" %}
+
+      {# You write code for this content block in another file #}
+      {% block content %} {% endblock %}
+
+      {% include "blocks/footer/footer.njk" %}
+    </div>
 
     {% include "../includes/scripts.njk" %}
   </body>
