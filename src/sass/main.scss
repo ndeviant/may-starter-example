@@ -1,4 +1,4 @@
-@import "vendor/_all";
+@import "vendor/materialize";
 
 @import "helpers/variables";
 @import "helpers/mixins";
@@ -6,7 +6,7 @@
 @import "base/fonts";
 @import "base/base";
 
-@import "layout/_all";
-@import "components/_all";
+@import "layout/layout";
+@import "components/components";
 
 @import "../components/all";
