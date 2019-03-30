@@ -40,23 +40,23 @@ const webpackConfig = require("./webpack.config.js"),
 			],
 			dist: "./dist/",
 			watch: [
-				"./src/blocks/**/*.njk",
+				"./src/components/**/*.njk",
 				"./src/views/**/*.njk"
 			],
 		},
 		styles: {
-			src: "./src/styles/main.scss",
-			dist: "./dist/assets/styles/",
+			src: "./src/sass/main.scss",
+			dist: "./dist/assets/css/",
 			watch: [
-				"./src/blocks/**/*.scss",
-				"./src/styles/**/*.scss"
+				"./src/components/**/*.scss",
+				"./src/sass/**/*.scss"
 			]
 		},
 		scripts: {
 			src: "./src/js/index.js",
 			dist: "./dist/assets/js/",
 			watch: [
-				"./src/blocks/**/*.js",
+				"./src/components/**/*.js",
 				"./src/js/**/*.js"
 			]
 		},
@@ -119,7 +119,7 @@ export const serverConfig = () => gulp.src(paths.server_config.src)
 	}));
 
 export const smartGrid = cb => {
-	smartgrid("./src/styles/vendor", {
+	smartgrid("./src/sass/vendor", {
 		outputStyle: "scss",
 		filename: "_smart-grid",
 		columns: 12, // number of grid columns

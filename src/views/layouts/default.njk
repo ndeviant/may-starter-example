@@ -4,21 +4,24 @@
 <html lang="en">
   <head>
     {% include "../includes/head.njk" %}
-    
+
     {% block title %}
-      <title>Nunjack's starter</title> 
+      <title>Nunjack's starter</title>
     {% endblock %}
 
-    {% block head %} {% endblock %}
+    {% block head %}{% endblock %}
   </head>
   <body>
-    <div class="wrapper">
-      {% include "blocks/header/header.njk" %}
+    <div class="layout">
+      {% include "components/layout/header/header.njk" %}
 
-      {# You write code for this content block in another file #}
-      {% block content %} {% endblock %}
+      <div
+        class="layout__main">
+        {# You write code for this content block in another file #}
+        {% block content %}{% endblock %}
+      </div>
 
-      {% include "blocks/footer/footer.njk" %}
+      {% include "components/layout/footer/footer.njk" %}
     </div>
 
     {% include "../includes/scripts.njk" %}

@@ -1,6 +1,5 @@
-.main {
+.banner_text {
 	text-align: center;
-	flex-grow: 1;
 	@include col();
 	@include size-xs(12);
 
