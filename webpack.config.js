@@ -1,6 +1,6 @@
 module.exports = {
 	output: {
-		filename: '[name].js',
+		filename: "[name].js",
 	},
 
 	module: {
@@ -9,9 +9,9 @@ module.exports = {
 				test: /\.js$/,
 				exclude: /node_modules/,
 				use: {
-					loader: 'babel-loader',
+					loader: "babel-loader",
 					query: {
-						presets: [['@babel/preset-env', { modules: false }]],
+						presets: [["@babel/preset-env", { modules: false }]],
 					},
 				},
 			},
@@ -23,8 +23,8 @@ module.exports = {
 			cacheGroups: {
 				vendors: {
 					test: /[\\/]node_modules[\\/]/,
-					name: 'vendor',
-					chunks: 'all',
+					name: "vendor",
+					chunks: "all",
 					minChunks: 1,
 				},
 			},

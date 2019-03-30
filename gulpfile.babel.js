@@ -159,7 +159,11 @@ export const styles = () =>
 		.src(paths.styles.src)
 		.pipe(gulpif(!production, sourcemaps.init()))
 		.pipe(plumber())
-		.pipe(sass())
+		.pipe(
+			sass({
+				includePaths: ["./node_modules"],
+			}),
+		)
 		.pipe(
 			postcss(
 				[

@@ -15,12 +15,6 @@ module.exports = {
 	"rules": {
 		"indent": "off",
 		"import/no-extraneous-dependencies": [2, { devDependencies: true }],
-		"import/no-unresolved": [
-      "error",
-      {
-        "ignore": [ '%components%' ]
-      }
-    ],
 		"prettier/prettier": ["error"],
 		"no-shadow": "off",
 		"import/prefer-default-export": "off",
