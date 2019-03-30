@@ -25,7 +25,6 @@ import plumber from "gulp-plumber";
 import debug from "gulp-debug";
 import clean from "gulp-clean";
 import yargs from "yargs";
-import smartgrid from "smart-grid";
 
 import webpackConfig from "./webpack.config";
 
@@ -105,40 +104,6 @@ export const serverConfig = () =>
 				title: "Server config",
 			}),
 		);
-
-export const smartGrid = cb => {
-	smartgrid("./src/sass/vendor", {
-		outputStyle: "scss",
-		filename: "_smart-grid",
-		columns: 12, // number of grid columns
-		offset: "30px", // gutter width
-		mobileFirst: true,
-		mixinNames: {
-			container: "container",
-		},
-		container: {
-			fields: "15px", // side fields
-		},
-		breakPoints: {
-			xs: {
-				width: "320px",
-			},
-			sm: {
-				width: "576px",
-			},
-			md: {
-				width: "768px",
-			},
-			lg: {
-				width: "992px",
-			},
-			xl: {
-				width: "1200px",
-			},
-		},
-	});
-	cb();
-};
 
 export const views = () =>
 	gulp
@@ -357,14 +322,12 @@ export const server = () => {
 
 export const development = gulp.series(
 	cleanFiles,
-	smartGrid,
 	gulp.parallel(views, styles, scripts, images, webpimages, fonts, favs),
 	gulp.parallel(server),
 );
 
 export const prod = gulp.series(
 	cleanFiles,
-	smartGrid,
 	serverConfig,
 	views,
 	styles,
