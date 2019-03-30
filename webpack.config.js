@@ -2,7 +2,7 @@ const path = require("path");
 
 module.exports = {
 	output: {
-		filename: "[name].js"
+		filename: "[name].js",
 	},
 
 	module: {
@@ -13,19 +13,17 @@ module.exports = {
 				use: {
 					loader: "babel-loader",
 					query: {
-						presets: [
-							["@babel/preset-env", { modules: false }]
-						]
-					}
-				}
-			}
-		]
+						presets: [["@babel/preset-env", { modules: false }]],
+					},
+				},
+			},
+		],
 	},
 
 	resolve: {
 		alias: {
 			"%blocks%": path.resolve(__dirname, "src/blocks"),
-		}
+		},
 	},
 
 	optimization: {
@@ -35,9 +33,9 @@ module.exports = {
 					test: /[\\/]node_modules[\\/]/,
 					name: "vendor",
 					chunks: "all",
-					minChunks: 1
-				}
-			}
-		}
+					minChunks: 1,
+				},
+			},
+		},
 	},
 };
