@@ -1,10 +1,10 @@
 {
-	"name": "gulp-pug-starter",
+	"name": "nunjacks-bem-starter",
 	"description": "Frontend development with pleasure",
-	"author": "Andrey Gorokhov",
+	"author": "Nikolai Kolosovskyi",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/andreyalexeich/gulp-pug-starter.git"
+		"url": "https://github.com/ndeviant/nunjacks-bem-starter"
 	},
 	"license": "MIT",
 	"scripts": {

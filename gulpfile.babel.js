@@ -33,7 +33,7 @@ const production = !!argv.production;
 
 const paths = {
 	views: {
-		src: ["./src/views/pages/**/*.njk"],
+		src: ["./src/views/pages/*.njk"],
 		dist: "./dist/",
 		watch: ["./src/components/**/*.njk", "./src/views/**/*.njk"],
 	},

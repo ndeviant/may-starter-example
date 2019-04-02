@@ -13,10 +13,9 @@ module.exports = {
 		"sourceType": "module"
 	},
 	"rules": {
+		"prettier/prettier": ["error"],
 		"indent": "off",
 		"import/no-extraneous-dependencies": [2, { devDependencies: true }],
-		"prettier/prettier": ["error"],
-		"no-shadow": "off",
 		"import/prefer-default-export": "off",
 		"no-plusplus": "off",
 		"camelcase": "off",

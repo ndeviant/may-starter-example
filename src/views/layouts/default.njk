@@ -15,11 +15,10 @@
     <div class="layout">
       {% include "components/layout/header/header.njk" %}
 
-      <div
-        class="layout__main">
+      <main class="layout__main">
         {# You write code for this content block in another file #}
         {% block content %}{% endblock %}
-      </div>
+      </main>
 
       {% include "components/layout/footer/footer.njk" %}
     </div>
