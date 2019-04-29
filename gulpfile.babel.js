@@ -20,6 +20,7 @@ import imageminGiflossy from "imagemin-giflossy";
 import imageminWebp from "imagemin-webp";
 import webp from "gulp-webp";
 import favicons from "gulp-favicons";
+import svgSprite from "gulp-svg-sprite";
 import replace from "gulp-replace";
 import plumber from "gulp-plumber";
 import debug from "gulp-debug";
@@ -51,10 +52,14 @@ const paths = {
 		src: [
 			"./src/img/**/*.{jpg,jpeg,png,gif,svg}",
 			"!./src/img/svg/*.svg",
-			"!./src/img/favicon.{jpg,jpeg,png,gif}",
+			"!./src/img/favicon.{jpg,jpeg,png,gif,svg}",
 		],
 		dist: "./dist/assets/img/",
-		watch: "./src/img/**/*.{jpg,jpeg,png,gif,svg}",
+		watch: [
+			"./src/img/**/*.{jpg,jpeg,png,gif,svg}",
+			"!./src/img/svg/*.svg",
+			"!./src/img/favicon.{jpg,jpeg,png,gif,svg}",
+		],
 	},
 	webp: {
 		src: "./src/img/**/*_webp.{jpg,jpeg,png}",
@@ -67,16 +72,22 @@ const paths = {
 		watch: "./src/fonts/**/*.{ttf,otf,woff,woff2}",
 	},
 	favicons: {
-		src: "./src/img/favicon.{jpg,jpeg,png,gif}",
+		src: "./src/img/favicon.{jpg,jpeg,png,gif,svg}",
 		dist: "./dist/assets/img/favicons/",
+		watch: "./src/img/favicon.{jpg,jpeg,png,gif,svg}",
 	},
-	server_config: {
+	svg: {
+		src: "./src/img/svg/*.svg",
+		dist: "./dist/assets/img/",
+		watch: "./src/img/svg/*.svg",
+	},
+	htaccess: {
 		src: "./src/.htaccess",
 		dist: "./dist/",
 	},
 };
 
-const bsConfig = {
+const serverConfig = {
 	server: "./dist/",
 	port: 4000,
 	notify: true,
@@ -95,10 +106,10 @@ export const cleanFiles = () =>
 			}),
 		);
 
-export const serverConfig = () =>
+export const htaccess = () =>
 	gulp
-		.src(paths.server_config.src)
-		.pipe(gulp.dest(paths.server_config.dist))
+		.src(paths.htaccess.src)
+		.pipe(gulp.dest(paths.htaccess.dist))
 		.pipe(
 			debug({
 				title: "Server config",
@@ -113,8 +124,8 @@ export const views = () =>
 				path: "./src/",
 			}),
 		)
-
 		.pipe(gulpif(production, replace("main.css", "main.min.css")))
+		.pipe(gulpif(production, replace("vendor.js", "vendor.min.js")))
 		.pipe(gulpif(production, replace("main.js", "main.min.js")))
 		.pipe(gulp.dest(paths.views.dist))
 		.on("end", browsersync.reload);
@@ -290,6 +301,7 @@ export const favs = () =>
 		.src(paths.favicons.src)
 		.pipe(
 			favicons({
+				background: "transparent",
 				icons: {
 					appleIcon: true,
 					favicons: true,
@@ -310,25 +322,63 @@ export const favs = () =>
 			}),
 		);
 
+export const svg = () =>
+	gulp
+		.src(paths.svg.src)
+		.pipe(plumber())
+		.pipe(
+			svgSprite({
+				shape: {
+					id: {
+						generator: `svg-%s`,
+					},
+					spacing: {
+						padding: 1,
+					},
+					dimension: {
+						maxWidth: 32,
+						maxHeight: 32,
+					},
+				},
+				mode: {
+					stack: {
+						bust: false,
+						sprite: "../sprite.svg",
+						// sprite: "../sprite.njk",
+					},
+				},
+			}),
+		)
+		.pipe(plumber.stop())
+		.pipe(gulp.dest(paths.svg.dist))
+		.pipe(
+			debug({
+				title: "Svg sprite",
+			}),
+		)
+		.on("end", browsersync.reload);
+
 export const server = () => {
-	browsersync.init(bsConfig);
+	browsersync.init(serverConfig);
 
 	gulp.watch(paths.views.watch, views);
 	gulp.watch(paths.styles.watch, styles);
 	gulp.watch(paths.scripts.watch, scripts);
 	gulp.watch(paths.images.watch, images);
 	gulp.watch(paths.webp.watch, webpimages);
+	gulp.watch(paths.favicons.watch, favs);
+	gulp.watch(paths.svg.watch, svg);
 };
 
 export const development = gulp.series(
 	cleanFiles,
-	gulp.parallel(views, styles, scripts, images, webpimages, fonts, favs),
+	gulp.parallel(views, styles, scripts, images, webpimages, fonts, favs, svg),
 	gulp.parallel(server),
 );
 
 export const prod = gulp.series(
 	cleanFiles,
-	serverConfig,
+	htaccess,
 	views,
 	styles,
 	scripts,
@@ -336,6 +386,7 @@ export const prod = gulp.series(
 	webpimages,
 	fonts,
 	favs,
+	svg,
 );
 
 export default development;

@@ -1,5 +1,11 @@
 .footer {
-  background-color: #333;
-  color: #ffffff;
-  min-width: 100px;
+	background-color: $dark-background;
+	color: #ffffff;
+	min-width: 100px;
+
+	&__container {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
 }

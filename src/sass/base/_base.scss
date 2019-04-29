@@ -1,5 +1,5 @@
 ::selection {
-	color: #fff; 
+	color: #fff;
 	background: $primary-color;
 }
 
@@ -11,11 +11,21 @@
 }
 
 body {
-	font-size: 16px;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
 	min-width: 320px;
 	color: #000;
-	position: relative;
+	font-size: 16px;
 	line-height: 1.5;
-	font-family: $font;
-	overflow-x: hidden;
+	font-family: $font-family;
+}
+
+a {
+	color: $primary-color;
+
+	&:hover {
+		text-decoration: underline;
+	}
 }

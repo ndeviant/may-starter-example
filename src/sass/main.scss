@@ -1,13 +1,13 @@
-
-@import "helpers/variables";
-@import "helpers/mixins";
-
 @import "vendor/materialize";
+
+@import "utils/variables";
+@import "utils/mixins";
 
 @import "base/fonts";
 @import "base/base";
 
 @import "layout/layout";
+
 @import "components/components";
 
 @import "../components/all";
