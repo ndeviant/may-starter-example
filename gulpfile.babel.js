@@ -23,6 +23,7 @@ import favicons from "gulp-favicons";
 import svgSprite from "gulp-svg-sprite";
 import replace from "gulp-replace";
 import plumber from "gulp-plumber";
+import notify from "gulp-notify";
 import debug from "gulp-debug";
 import clean from "gulp-clean";
 
@@ -118,6 +119,14 @@ export const views = () =>
 	gulp
 		.src(paths.views.src)
 		.pipe(
+      plumber({ 
+				errorHandler: notify.onError(() => ({
+					title: 'Views',
+					message: 'Error: <%= error.message %>',
+				})) 
+			}),
+		)
+		.pipe(
 			nunjucksRender({
 				path: "./src/",
 			}),
@@ -132,7 +141,14 @@ export const styles = () =>
 	gulp
 		.src(paths.styles.src)
 		.pipe(gulpif(!isProduction, sourcemaps.init()))
-		.pipe(plumber())
+    .pipe(
+      plumber({ 
+				errorHandler: notify.onError(() => ({
+					title: 'Styles',
+					message: 'Error: <%= error.message %>',
+				})) 
+			}),
+		)
 		.pipe(
 			sass({
 				includePaths: ["./node_modules"],
@@ -323,7 +339,14 @@ export const favs = () =>
 export const svg = () =>
 	gulp
 		.src(paths.svg.src)
-		.pipe(plumber())
+    .pipe(
+      plumber({ 
+				errorHandler: notify.onError(() => ({
+					title: 'Svg',
+					message: 'Error: <%= error.message %>',
+				})) 
+			}),
+		)
 		.pipe(
 			svgSprite({
 				shape: {
@@ -340,9 +363,9 @@ export const svg = () =>
 				},
 				mode: {
 					stack: {
+						dest: '.',
 						bust: false,
-						sprite: "../sprite.svg",
-						// sprite: "../sprite.njk",
+						sprite: "sprite.svg",
 					},
 				},
 			}),
