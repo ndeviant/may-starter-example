@@ -29,9 +29,13 @@ import clean from "gulp-clean";
 
 import webpackConfig from "./webpack.config";
 
-const isProduction = process.env.NODE_ENV === 'production';
+const isProduction = process.env.NODE_ENV === "production";
 
 const paths = {
+	root: {
+		src: "./src",
+		dist: "./dist",
+	},
 	views: {
 		src: ["./src/views/pages/*.njk"],
 		dist: "./dist/",
@@ -119,11 +123,11 @@ export const views = () =>
 	gulp
 		.src(paths.views.src)
 		.pipe(
-      plumber({ 
+			plumber({
 				errorHandler: notify.onError(() => ({
-					title: 'Views',
-					message: 'Error: <%= error.message %>',
-				})) 
+					title: "Views",
+					message: "Error: <%= error.message %>",
+				})),
 			}),
 		)
 		.pipe(
@@ -141,12 +145,12 @@ export const styles = () =>
 	gulp
 		.src(paths.styles.src)
 		.pipe(gulpif(!isProduction, sourcemaps.init()))
-    .pipe(
-      plumber({ 
+		.pipe(
+			plumber({
 				errorHandler: notify.onError(() => ({
-					title: 'Styles',
-					message: 'Error: <%= error.message %>',
-				})) 
+					title: "Styles",
+					message: "Error: <%= error.message %>",
+				})),
 			}),
 		)
 		.pipe(
@@ -339,12 +343,12 @@ export const favs = () =>
 export const svg = () =>
 	gulp
 		.src(paths.svg.src)
-    .pipe(
-      plumber({ 
+		.pipe(
+			plumber({
 				errorHandler: notify.onError(() => ({
-					title: 'Svg',
-					message: 'Error: <%= error.message %>',
-				})) 
+					title: "Svg",
+					message: "Error: <%= error.message %>",
+				})),
 			}),
 		)
 		.pipe(
@@ -363,7 +367,7 @@ export const svg = () =>
 				},
 				mode: {
 					stack: {
-						dest: '.',
+						dest: ".",
 						bust: false,
 						sprite: "sprite.svg",
 					},
