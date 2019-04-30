@@ -25,12 +25,10 @@ import replace from "gulp-replace";
 import plumber from "gulp-plumber";
 import debug from "gulp-debug";
 import clean from "gulp-clean";
-import yargs from "yargs";
 
 import webpackConfig from "./webpack.config";
 
-const { argv } = yargs;
-const production = !!argv.production;
+const isProduction = process.env.NODE_ENV === 'production';
 
 const paths = {
 	views: {
@@ -93,8 +91,8 @@ const serverConfig = {
 	notify: true,
 };
 
-webpackConfig.mode = production ? "production" : "development";
-webpackConfig.devtool = production ? false : "cheap-eval-source-map";
+webpackConfig.mode = isProduction ? "production" : "development";
+webpackConfig.devtool = isProduction ? false : "cheap-eval-source-map";
 
 export const cleanFiles = () =>
 	gulp
@@ -124,16 +122,16 @@ export const views = () =>
 				path: "./src/",
 			}),
 		)
-		.pipe(gulpif(production, replace("main.css", "main.min.css")))
-		.pipe(gulpif(production, replace("vendor.js", "vendor.min.js")))
-		.pipe(gulpif(production, replace("main.js", "main.min.js")))
+		.pipe(gulpif(isProduction, replace("main.css", "main.min.css")))
+		.pipe(gulpif(isProduction, replace("vendor.js", "vendor.min.js")))
+		.pipe(gulpif(isProduction, replace("main.js", "main.min.js")))
 		.pipe(gulp.dest(paths.views.dist))
 		.on("end", browsersync.reload);
 
 export const styles = () =>
 	gulp
 		.src(paths.styles.src)
-		.pipe(gulpif(!production, sourcemaps.init()))
+		.pipe(gulpif(!isProduction, sourcemaps.init()))
 		.pipe(plumber())
 		.pipe(
 			sass({
@@ -146,7 +144,7 @@ export const styles = () =>
 					mqpacker({
 						sort: sortCSSmq,
 					}),
-					production
+					isProduction
 						? autoprefixer({
 								browsers: ["last 12 versions", "> 1%", "ie 8", "ie 7"],
 						  })
@@ -156,7 +154,7 @@ export const styles = () =>
 		)
 		.pipe(
 			gulpif(
-				production,
+				isProduction,
 				mincss({
 					compatibility: "ie8",
 					level: {
@@ -179,14 +177,14 @@ export const styles = () =>
 		)
 		.pipe(
 			gulpif(
-				production,
+				isProduction,
 				rename({
 					suffix: ".min",
 				}),
 			),
 		)
 		.pipe(plumber.stop())
-		.pipe(gulpif(!production, sourcemaps.write("./maps/")))
+		.pipe(gulpif(!isProduction, sourcemaps.write("./maps/")))
 		.pipe(gulp.dest(paths.styles.dist))
 		.pipe(
 			debug({
@@ -204,7 +202,7 @@ export const scripts = () =>
 		)
 		.pipe(
 			gulpif(
-				production,
+				isProduction,
 				rename({
 					suffix: ".min",
 				}),
@@ -223,7 +221,7 @@ export const images = () =>
 		.src(paths.images.src)
 		.pipe(
 			gulpif(
-				production,
+				isProduction,
 				imagemin([
 					imageminGiflossy({
 						optimizationLevel: 3,
@@ -270,7 +268,7 @@ export const webpimages = () =>
 		.pipe(
 			webp(
 				gulpif(
-					production,
+					isProduction,
 					imageminWebp({
 						lossless: true,
 						quality: 90,
@@ -376,7 +374,7 @@ export const development = gulp.series(
 	gulp.parallel(server),
 );
 
-export const prod = gulp.series(
+export const build = gulp.series(
 	cleanFiles,
 	htaccess,
 	views,
