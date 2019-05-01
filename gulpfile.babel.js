@@ -31,69 +31,69 @@ import webpackConfig from "./webpack.config";
 
 const isProduction = process.env.NODE_ENV === "production";
 
-const paths = {
-	root: {
-		src: "./src",
-		dist: "./dist",
-	},
-	views: {
-		src: ["./src/views/pages/*.njk"],
-		dist: "./dist/",
-		watch: ["./src/components/**/*.njk", "./src/views/**/*.njk"],
-	},
-	styles: {
-		src: "./src/sass/main.scss",
-		dist: "./dist/assets/css/",
-		watch: ["./src/components/**/*.scss", "./src/sass/**/*.scss"],
-	},
-	scripts: {
-		src: "./src/js/index.js",
-		dist: "./dist/assets/js/",
-		watch: ["./src/components/**/*.js", "./src/js/**/*.js"],
-	},
-	images: {
-		src: [
-			"./src/img/**/*.{jpg,jpeg,png,gif,svg}",
-			"!./src/img/svg/*.svg",
-			"!./src/img/favicon.{jpg,jpeg,png,gif,svg}",
-		],
-		dist: "./dist/assets/img/",
-		watch: [
-			"./src/img/**/*.{jpg,jpeg,png,gif,svg}",
-			"!./src/img/svg/*.svg",
-			"!./src/img/favicon.{jpg,jpeg,png,gif,svg}",
-		],
-	},
-	webp: {
-		src: "./src/img/**/*_webp.{jpg,jpeg,png}",
-		dist: "./dist/assets/img/",
-		watch: "./src/img/**/*_webp.{jpg,jpeg,png}",
-	},
-	fonts: {
-		src: "./src/fonts/**/*.{ttf,otf,woff,woff2}",
-		dist: "./dist/assets/fonts/",
-		watch: "./src/fonts/**/*.{ttf,otf,woff,woff2}",
-	},
-	favicons: {
-		src: "./src/img/favicon.{jpg,jpeg,png,gif,svg}",
-		dist: "./dist/assets/img/favicons/",
-		watch: "./src/img/favicon.{jpg,jpeg,png,gif,svg}",
-	},
-	svg: {
-		src: "./src/img/svg/*.svg",
-		dist: "./dist/assets/img/",
-		watch: "./src/img/svg/*.svg",
-	},
-	htaccess: {
-		src: "./src/.htaccess",
-		dist: "./dist/",
-	},
+const root = {
+	src: "./src",
+	dist: "./dist",
 };
 
 const serverConfig = {
-	server: "./dist/",
-	port: 4000,
+	server: root.dist,
 	notify: true,
+};
+
+const paths = {
+	views: {
+		src: [`${root.src}/views/pages/*.njk`],
+		dist: root.dist,
+		watch: [`${root.src}/components/**/*.njk`, `${root.src}/views/**/*.njk`],
+	},
+	styles: {
+		src: `${root.src}/sass/main.scss`,
+		dist: `${root.dist}/assets/css/`,
+		watch: [`${root.src}/components/**/*.scss`, `${root.src}/sass/**/*.scss`],
+	},
+	scripts: {
+		src: `${root.src}/js/index.js`,
+		dist: `${root.dist}/assets/js/`,
+		watch: [`${root.src}/components/**/*.js`, `${root.src}/js/**/*.js`],
+	},
+	images: {
+		src: [
+			`${root.src}/img/**/*.{jpg,jpeg,png,gif,svg}`,
+			"!%src%/img/svg/*.svg",
+			"!%src%/img/favicon.{jpg,jpeg,png,gif,svg}",
+		],
+		dist: `${root.dist}/assets/img/`,
+		watch: [
+			`${root.src}/img/**/*.{jpg,jpeg,png,gif,svg}`,
+			"!%src%/img/svg/*.svg",
+			"!%src%/img/favicon.{jpg,jpeg,png,gif,svg}",
+		],
+	},
+	webp: {
+		src: `${root.src}/img/**/*_webp.{jpg,jpeg,png}`,
+		dist: `${root.dist}/assets/img/`,
+		watch: `${root.src}/img/**/*_webp.{jpg,jpeg,png}`,
+	},
+	fonts: {
+		src: `${root.src}/fonts/**/*.{ttf,otf,woff,woff2}`,
+		dist: `${root.dist}/assets/fonts/`,
+		watch: `${root.src}/fonts/**/*.{ttf,otf,woff,woff2}`,
+	},
+	favicons: {
+		src: `${root.src}/img/favicon.{jpg,jpeg,png,gif,svg}`,
+		dist: `${root.dist}/assets/img/favicons/`,
+		watch: `${root.src}/img/favicon.{jpg,jpeg,png,gif,svg}`,
+	},
+	svg: {
+		src: `${root.src}/img/svg/*.svg`,
+		dist: `${root.dist}/assets/img/`,
+		watch: `${root.src}/img/svg/*.svg`,
+	},
+	htaccess: {
+		src: `${root.src}/.htaccess`,
+		dist: root.dist,
+	},
 };
 
 webpackConfig.mode = isProduction ? "production" : "development";

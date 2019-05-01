@@ -1,64 +1,31 @@
-const paths = {
-	root: {
-		src: "./src/",
-		dist: "./dist/",
-	},
-	views: {
-		src: ["%src%/views/pages/*.njk"],
-		dist: "./dist/",
-		watch: ["./src/components/**/*.njk", "./src/views/**/*.njk"],
-	},
-	styles: {
-		src: "./src/sass/main.scss",
-		dist: "./dist/assets/css/",
-		watch: ["./src/components/**/*.scss", "./src/sass/**/*.scss"],
-	},
-	scripts: {
-		src: "./src/js/index.js",
-		dist: "./dist/assets/js/",
-		watch: ["./src/components/**/*.js", "./src/js/**/*.js"],
-	},
-	images: {
-		src: [
-			"./src/img/**/*.{jpg,jpeg,png,gif,svg}",
-			"!./src/img/svg/*.svg",
-			"!./src/img/favicon.{jpg,jpeg,png,gif,svg}",
-		],
-		dist: "./dist/assets/img/",
-		watch: "this->src",
-	},
-	webp: {
-		src: "./src/img/**/*_webp.{jpg,jpeg,png}",
-		dist: "./dist/assets/img/",
-		watch: "this->src",
-	},
-	fonts: {
-		src: "./src/fonts/**/*.{ttf,otf,woff,woff2}",
-		dist: "./dist/assets/fonts/",
-		watch: "this->src",
-	},
-	favicons: {
-		src: "./src/img/favicon.{jpg,jpeg,png,gif,svg}",
-		dist: "./dist/assets/img/favicons/",
-		watch: "this->src",
-	},
-	svg: {
-		src: "./src/img/svg/*.svg",
-		dist: "./dist/assets/img/",
-		watch: "this->src",
-	},
-	htaccess: {
-		src: "./src/.htaccess",
-		dist: "./dist/",
-	},
+// Add %src%, %dist% to path, so you can refference to the root fields
+// Add this-> so you can refference the field in current object
+
+const recursiveCall = (field, recursive, callback) => {
+	if (typeof field === "object" && field !== null && !Array.isArray(field)) {
+		if (!recursive) return field;
+
+		const newField = {};
+
+		Object.keys(field).forEach(innerFieldKey => {
+			newField[innerFieldKey] = callback(field[innerFieldKey]);
+		});
+
+		return newField;
+	}
+
+	return false;
 };
 
-// Add %src%, %dist% to handler, so we can refference to the root fields
-// Add this-> so we can refference the field in current object
+const refToThis = (obj, field, recursive = true, linkStr = "this->") => {
+	const recursiveField = recursiveCall(field, recursive, innerField => {
+		return refToThis(field, innerField);
+	});
 
-const Okeys = (obj, ...rest) => Object.keys(obj, ...rest);
+	if (recursiveField) return recursiveField;
 
-const refToThis = (obj, field, linkStr = "this->") => {
+	if (typeof field !== "string") return field;
+
 	const hasRef = field.indexOf(linkStr);
 
 	if (hasRef === -1) return field;
@@ -66,79 +33,70 @@ const refToThis = (obj, field, linkStr = "this->") => {
 	const thisField = field.replace(linkStr, "");
 
 	if (!obj[thisField]) {
-		console.error("Field you are reffering to doesnt exist.");
+		// eslint-disable-next-line no-console
+		console.error(`Field you are reffering to doesnt exist: ${thisField}`);
 		return field;
 	}
 
 	return obj[thisField];
 };
 
-const refToRoot = (root, field) => {
-	console.log("substrings", field);
+const refToRoot = (root, field, recursive = true) => {
+	const recursiveField = recursiveCall(field, recursive, innerField => {
+		return refToRoot(root, innerField);
+	});
+
+	if (recursiveField) return recursiveField;
 
 	if (Array.isArray(field)) {
-		field.forEach(fieldElem => {
-			refToRoot(root, fieldElem);
+		return field.map(fieldElem => {
+			return refToRoot(root, fieldElem);
 		});
 	}
 
 	if (typeof field !== "string") return field;
 
 	const substrings = field.match(/%[\w\d]+%/g);
-	console.log("regexp", substrings);
 
 	if (substrings === null) return field;
 
 	substrings.forEach(substring => {
 		const cleaned = substring.slice(1, -1);
 
-		if (root[cleaned]) {
-			field = field.replace(substring, root[cleaned]);
-		} else {
-			console.error("Shit!");
+		if (!root[cleaned]) {
+			// eslint-disable-next-line no-console
+			console.error(`You dont have such field in 'root': ${cleaned}`);
+			return;
 		}
 
-		console.log("cleaned", cleaned);
+		// eslint-disable-next-line no-param-reassign
+		field = field.replace(substring, root[cleaned]).replace("//", "/");
 	});
-	// if (hasRef === -1) return field;
 
-	// const thisField = field.replace(wrapStr, "");
-
-	// if (!obj[thisField]) {
-	// 	console.error("Field you are reffering to doesnt exist.");
-	// 	return field;
-	// }
-
-	// return obj[thisField];
 	return field;
 };
 
 const configHandler = config => {
 	const { root } = config;
 
-	const resultConfig = {};
+	const resultConfig = { root };
 
-	Okeys(config).forEach(taskKey => {
+	Object.keys(config).forEach(taskKey => {
+		if (taskKey === "root") return;
+
 		const taskConfig = config[taskKey];
 
-		if (taskKey === "root") {
-			resultConfig[taskKey] = taskConfig;
-			return;
-		}
-
-		const taskConfigKeys = Okeys(taskConfig);
+		const taskConfigKeys = Object.keys(taskConfig);
 
 		// Adding refs to root
 		taskConfigKeys.forEach(key => {
 			const field = taskConfig[key];
-
 			taskConfig[key] = refToRoot(root, field);
 		});
 
 		// Adding refs to self
 		taskConfigKeys.forEach(key => {
 			const field = taskConfig[key];
-
 			taskConfig[key] = refToThis(taskConfig, field);
 		});
 
@@ -147,7 +105,5 @@ const configHandler = config => {
 
 	return resultConfig;
 };
-const jopi = configHandler(paths);
-console.log(jopi);
 
 module.exports = configHandler;
