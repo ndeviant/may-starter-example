@@ -1,3 +1,9 @@
-const options = { govno: "sobaki" };
+const options = {
+	root: {
+		src: "",
+		dist: "",
+	},
+	browserSync: {},
+};
 
 export { options };

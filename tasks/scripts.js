@@ -8,7 +8,7 @@ import webpackStream from "webpack-stream";
 
 import { config } from "./gulp.config";
 import { isProduction } from "./helpers/mode";
-import webpackConfig from "../webpack.config";
+import webpackConfig from "../webpack.config.babel";
 
 webpackConfig.mode = isProduction ? "production" : "development";
 webpackConfig.devtool = isProduction ? false : "cheap-eval-source-map";

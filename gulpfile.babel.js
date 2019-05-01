@@ -14,10 +14,10 @@ import { webp } from "./tasks/webp";
 
 import { config } from "./tasks/gulp.config";
 
-const { serverConfig, paths } = config;
+const { bsyncConfig, paths } = config;
 
 const server = () => {
-	browsersync.init(serverConfig);
+	browsersync.init(bsyncConfig);
 
 	gulp.watch(paths.views.watch, views);
 	gulp.watch(paths.styles.watch, styles);

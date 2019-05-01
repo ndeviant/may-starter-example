@@ -1,13 +1,14 @@
 import { options } from "../build.options";
 
 const root = {
-	src: "./src",
-	dist: "./dist",
+	src: options.root.src || "./src",
+	dist: options.root.dist || "./dist",
 };
 
-const serverConfig = {
+const bsyncConfig = {
 	server: root.dist,
 	notify: true,
+	...options.browserSync,
 };
 
 const paths = {
@@ -29,14 +30,14 @@ const paths = {
 	images: {
 		src: [
 			`${root.src}/img/**/*.{jpg,jpeg,png,gif,svg}`,
-			"!%src%/img/svg/*.svg",
-			"!%src%/img/favicon.{jpg,jpeg,png,gif,svg}",
+			`!${root.src}/img/svg/*.svg`,
+			`!${root.src}/img/favicon.{jpg,jpeg,png,gif,svg}`,
 		],
 		dist: `${root.dist}/assets/img/`,
 		watch: [
 			`${root.src}/img/**/*.{jpg,jpeg,png,gif,svg}`,
-			"!%src%/img/svg/*.svg",
-			"!%src%/img/favicon.{jpg,jpeg,png,gif,svg}",
+			`!${root.src}/img/svg/*.svg`,
+			`!${root.src}/img/favicon.{jpg,jpeg,png,gif,svg}`,
 		],
 	},
 	webp: {
@@ -67,9 +68,8 @@ const paths = {
 
 const config = {
 	root,
-	serverConfig,
+	bsyncConfig,
 	paths,
-	options,
 };
 
 export { config };
