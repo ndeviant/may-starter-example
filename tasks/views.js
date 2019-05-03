@@ -8,6 +8,7 @@ import browsersync from "browser-sync";
 
 import { config } from "./gulp.config";
 import { isProduction } from "./helpers/mode";
+import data from "../template.data";
 
 const views = () =>
 	gulp
@@ -22,7 +23,8 @@ const views = () =>
 		)
 		.pipe(
 			nunjucksRender({
-				path: "./src/",
+				path: `${config.root.src}/`,
+				data,
 			}),
 		)
 		.pipe(gulpif(isProduction, replace("main.css", "main.min.css")))
