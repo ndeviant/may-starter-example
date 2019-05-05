@@ -7,7 +7,9 @@ const root = {
 
 const bsyncConfig = {
 	server: root.dist,
-	notify: true,
+	notify: false,
+	online: !!options.browserSync.tunnel,
+	middleware: [],
 	...options.browserSync,
 };
 

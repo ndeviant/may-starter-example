@@ -1,4 +1,6 @@
-module.exports = {
+import { isProduction } from "./tasks/helpers/mode";
+
+const webpackConfig = {
 	output: {
 		filename: "[name].js",
 	},
@@ -30,4 +32,11 @@ module.exports = {
 			},
 		},
 	},
+
+	plugins: [],
 };
+
+webpackConfig.mode = isProduction ? "production" : "development";
+webpackConfig.devtool = isProduction ? false : "cheap-eval-source-map";
+
+export default webpackConfig;

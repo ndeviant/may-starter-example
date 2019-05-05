@@ -10,9 +10,6 @@ import { config } from "./gulp.config";
 import { isProduction } from "./helpers/mode";
 import webpackConfig from "../webpack.config.babel";
 
-webpackConfig.mode = isProduction ? "production" : "development";
-webpackConfig.devtool = isProduction ? false : "cheap-eval-source-map";
-
 const scripts = () =>
 	gulp
 		.src(config.paths.scripts.src)

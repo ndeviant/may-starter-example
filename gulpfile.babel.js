@@ -1,66 +1,14 @@
-import gulp from "gulp";
-import browsersync from "browser-sync";
+export { cleanFiles } from "./tasks/cleanFiles";
+export { favs } from "./tasks/favs";
+export { fonts } from "./tasks/fonts";
+export { htaccess } from "./tasks/htaccess";
+export { images } from "./tasks/images";
+export { scripts } from "./tasks/scripts";
+export { styles } from "./tasks/styles";
+export { svg } from "./tasks/svg";
+export { views } from "./tasks/views";
+export { webp } from "./tasks/webp";
 
-import { cleanFiles } from "./tasks/cleanFiles";
-import { favs } from "./tasks/favs";
-import { fonts } from "./tasks/fonts";
-import { htaccess } from "./tasks/htaccess";
-import { images } from "./tasks/images";
-import { scripts } from "./tasks/scripts";
-import { styles } from "./tasks/styles";
-import { svg } from "./tasks/svg";
-import { views } from "./tasks/views";
-import { webp } from "./tasks/webp";
-
-import { config } from "./tasks/gulp.config";
-
-const { bsyncConfig, paths } = config;
-
-const server = () => {
-	browsersync.init(bsyncConfig);
-
-	gulp.watch(paths.views.watch, views);
-	gulp.watch(paths.styles.watch, styles);
-	gulp.watch(paths.scripts.watch, scripts);
-	gulp.watch(paths.images.watch, images);
-	gulp.watch(paths.webp.watch, webp);
-	gulp.watch(paths.favicons.watch, favs);
-	gulp.watch(paths.svg.watch, svg);
-};
-
-const development = gulp.series(
-	cleanFiles,
-	gulp.parallel(views, styles, scripts, images, webp, fonts, favs, svg),
-	gulp.parallel(server),
-);
-
-const build = gulp.series(
-	cleanFiles,
-	htaccess,
-	views,
-	styles,
-	scripts,
-	images,
-	webp,
-	fonts,
-	favs,
-	svg,
-);
-
-export {
-	cleanFiles,
-	favs,
-	fonts,
-	htaccess,
-	images,
-	scripts,
-	styles,
-	svg,
-	views,
-	webp,
-	server,
-	development,
-	build,
-};
-
-export default development;
+export { server } from "./tasks/server";
+export { build } from "./tasks/build";
+export { develop, develop as default } from "./tasks/develop";
