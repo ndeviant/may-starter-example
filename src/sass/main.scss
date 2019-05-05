@@ -1,13 +1,15 @@
-@import "vendor/materialize";
-
 @import "utils/variables";
 @import "utils/mixins";
 
+@import "vendor/bootstrap";
+
 @import "base/fonts";
 @import "base/base";
+@import "base/cms";
 
 @import "layout/layout";
 
-@import "components/components";
+@import "components/common";
+@import "components/button";
 
 @import "../components/all";

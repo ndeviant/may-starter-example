@@ -6,7 +6,7 @@ import debug from "gulp-debug";
 import webpack from "webpack";
 import webpackStream from "webpack-stream";
 
-import { config } from "./gulp.config";
+import { config } from "./helpers/gulp.config";
 import { isProduction } from "./helpers/mode";
 import webpackConfig from "../webpack.config.babel";
 

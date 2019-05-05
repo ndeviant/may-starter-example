@@ -9,7 +9,7 @@ import { svg } from "./svg";
 import { views } from "./views";
 import { webp } from "./webp";
 
-import { config } from "./gulp.config";
+import { config } from "./helpers/gulp.config";
 
 const { bsyncConfig, paths } = config;
 

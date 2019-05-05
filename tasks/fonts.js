@@ -1,7 +1,7 @@
 import gulp from "gulp";
 import debug from "gulp-debug";
 
-import { config } from "./gulp.config";
+import { config } from "./helpers/gulp.config";
 
 const fonts = () =>
 	gulp

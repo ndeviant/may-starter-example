@@ -6,7 +6,7 @@ import plumber from "gulp-plumber";
 import nunjucksRender from "gulp-nunjucks-render";
 import browsersync from "browser-sync";
 
-import { config } from "./gulp.config";
+import { config } from "./helpers/gulp.config";
 import { isProduction } from "./helpers/mode";
 import data from "../template.data";
 

@@ -1,0 +1,12 @@
+{% extends "views/layouts/default.njk" %}
+{% block title %}
+  <title>Blog | {{ title }}</title>
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    {% for post in posts %}
+      {% include "components/blocks/post/post.njk" %}
+    {% endfor %}
+  </div>
+{% endblock %}

@@ -11,7 +11,7 @@ import imageminZopfli from "imagemin-zopfli";
 import imageminMozjpeg from "imagemin-mozjpeg";
 import imageminGiflossy from "imagemin-giflossy";
 
-import { config } from "./gulp.config";
+import { config } from "./helpers/gulp.config";
 import { isProduction } from "./helpers/mode";
 
 const images = () =>

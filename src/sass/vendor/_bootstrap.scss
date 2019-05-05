@@ -1,0 +1,30 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+
+$grid-gutter-width: 30px;
+$grid-columns: 12;
+
+$grid-breakpoints: (
+	xxxs: 0,
+	xxs: 414px,
+	xs: 568px,
+	sm: 667px,
+	md: 768px,
+	lg: 992px,
+	xl: 1200px,
+	xxl: 1600px,
+);
+
+$container-max-widths: (
+	xs: 568px,
+	sm: 667px,
+	md: 768px,
+	lg: 992px,
+	xl: 1200px,
+	xxl: 1600px,
+);
+
+$gutter: $grid-gutter-width;
+
+@import "bootstrap/scss/bootstrap-reboot";
+@import "bootstrap/scss/bootstrap-grid";

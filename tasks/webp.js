@@ -7,7 +7,7 @@ import plumber from "gulp-plumber";
 import notify from "gulp-notify";
 import debug from "gulp-debug";
 
-import { config } from "./gulp.config";
+import { config } from "./helpers/gulp.config";
 import { isProduction } from "./helpers/mode";
 
 const webp = () =>
@@ -21,7 +21,7 @@ const webp = () =>
 				})),
 			}),
 		)
-		.pipe(changed(config.paths.images.dist))
+		.pipe(changed(config.paths.webp.dist))
 		.pipe(
 			gulpwebp(
 				gulpif(

@@ -5,7 +5,7 @@ import debug from "gulp-debug";
 import svgSprite from "gulp-svg-sprite";
 import browsersync from "browser-sync";
 
-import { config } from "./gulp.config";
+import { config } from "./helpers/gulp.config";
 
 const svg = () =>
 	gulp

@@ -2,7 +2,7 @@ import gulp from "gulp";
 import clean from "gulp-clean";
 import debug from "gulp-debug";
 
-import { config } from "./gulp.config";
+import { config } from "./helpers/gulp.config";
 
 const cleanFiles = () =>
 	gulp

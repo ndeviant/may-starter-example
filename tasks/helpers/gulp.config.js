@@ -1,4 +1,4 @@
-import { options } from "../build.options";
+import { options } from "../../build.options";
 
 const root = {
 	src: options.root.src || "./src",

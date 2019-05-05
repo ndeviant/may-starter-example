@@ -13,7 +13,7 @@ import sourcemaps from "gulp-sourcemaps";
 import rename from "gulp-rename";
 import debug from "gulp-debug";
 
-import { config } from "./gulp.config";
+import { config } from "./helpers/gulp.config";
 import { isProduction } from "./helpers/mode";
 
 const styles = () =>
