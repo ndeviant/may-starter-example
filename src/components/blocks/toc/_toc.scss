@@ -1,0 +1,67 @@
+.toc {
+	margin-top: 2rem;
+	margin-bottom: 1rem;
+
+	&__content {
+		ol,
+		ul {
+			padding-left: 52px;
+			padding-top: 1px;
+			padding-bottom: 1px;
+			line-height: 1.4;
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+
+		ol {
+			counter-reset: item;
+		}
+
+		ul {
+			li::before {
+				content: "";
+				counter-increment: none;
+			}
+		}
+
+		li {
+			position: relative;
+			display: block;
+			margin-bottom: 1.325em;
+			margin-top: 1.325em;
+			font-size: 20px;
+
+			&::before {
+				content: counters(item, ".");
+				counter-increment: item;
+				font-size: 40px;
+				left: -52px;
+				top: -20px;
+				font-weight: 700;
+				color: #d4d4d4;
+				position: absolute;
+			}
+
+			li {
+				&::before {
+					font-size: 20px;
+					top: 0px;
+				}
+
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+
+			a {
+				color: $text-color;
+				text-decoration: none;
+				border-bottom: 1px solid currentColor;
+
+				&:hover {
+					border-bottom-color: transparent;
+				}
+			}
+		}
+	}
+}
