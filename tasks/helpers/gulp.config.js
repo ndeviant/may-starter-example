@@ -28,9 +28,9 @@ const options = {
 
 const paths = {
 	views: {
-		src: [`${root.src}/views/pages/*.njk`],
+		src: [`${root.src}/views/pages/*.twig`],
 		dist: root.dist,
-		watch: [`${root.src}/components/**/*.njk`, `${root.src}/views/**/*.njk`],
+		watch: [`${root.src}/components/**/*.twig`, `${root.src}/views/**/*.twig`],
 	},
 	styles: {
 		src: `${root.src}/sass/main.scss`,

@@ -1,9 +1,9 @@
-{% import "../utils/macro.njk" as macro %}
+{% import "../utils/macro.twig" as macro %}
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    {% include "../includes/head.njk" %}
+    {% include "../includes/head.twig" %}
 
     {% block title %}
       <title>{{title}}</title>
@@ -13,16 +13,16 @@
   </head>
   <body>
     <div class="layout">
-      {% include "components/layout/header/header.njk" %}
+      {% include "components/layout/header/header.twig" %}
 
       <main class="layout__main">
         {# You write code for this content block in another file #}
         {% block content %}{% endblock %}
       </main>
 
-      {% include "components/layout/footer/footer.njk" %}
+      {% include "components/layout/footer/footer.twig" %}
     </div>
 
-    {% include "../includes/scripts.njk" %}
+    {% include "../includes/scripts.twig" %}
   </body>
 </html>

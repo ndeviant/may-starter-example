@@ -3,7 +3,7 @@ import gulpif from "gulp-if";
 import notify from "gulp-notify";
 import replace from "gulp-replace";
 import plumber from "gulp-plumber";
-import nunjucksRender from "gulp-nunjucks-render";
+import twig from "gulp-twig";
 import browsersync from "browser-sync";
 
 import { config } from "./helpers/gulp.config";
@@ -22,8 +22,8 @@ const views = () =>
 			}),
 		)
 		.pipe(
-			nunjucksRender({
-				path: `${config.root.src}/`,
+			twig({
+				base: `${config.root.src}/`,
 				data,
 			}),
 		)

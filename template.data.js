@@ -1,5 +1,5 @@
 const data = {
-	title: "Nunjack's starter",
+	title: "Twig starter",
 
 	posts: [
 		{

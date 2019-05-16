@@ -5,7 +5,7 @@ const options = {
 	},
 	browserSync: {},
 	views: {
-		run: false,
+		run: true,
 	},
 };
 

@@ -1,4 +1,4 @@
-{% extends "views/layouts/default.njk" %}
+{% extends "views/layouts/default.twig" %}
 {% block title %}
   <title>Blog | {{ title }}</title>
 {% endblock %}
@@ -6,7 +6,7 @@
 {% block content %}
   <div class="container">
     {% for post in posts %}
-      {% include "components/blocks/post/post.njk" %}
+      {% include "components/blocks/post/post.twig" %}
     {% endfor %}
   </div>
 {% endblock %}
