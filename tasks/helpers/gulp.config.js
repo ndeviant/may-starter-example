@@ -1,28 +1,30 @@
 import { options as userOptions } from "../../build.options";
 
-const {
-	root: userRoot,
-	browserSync: userBrowserSync,
-	...restOptions
-} = userOptions;
-
 const root = {
-	src: userRoot.src || "./src",
-	dist: userRoot.dist || "./dist",
+	src: userOptions.root.src || "./src",
+	dist: userOptions.root.dist || "./dist",
 };
 
 const bsyncConfig = {
 	server: root.dist,
 	notify: false,
-	online: !!userBrowserSync.tunnel,
+	online: !!userOptions.browserSync.tunnel,
 	middleware: [],
-	...userBrowserSync,
+	...userOptions.browserSync,
 };
 
 const options = {
 	views: {
 		run: true,
-		...restOptions.views,
+		...userOptions.views,
+	},
+	favicons: {
+		run: true,
+		...userOptions.favicons,
+	},
+	svg: {
+		run: true,
+		...userOptions.svg,
 	},
 };
 

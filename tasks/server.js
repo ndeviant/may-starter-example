@@ -20,12 +20,18 @@ const server = () => {
 		gulp.watch(paths.views.watch, views);
 	}
 
+	if (options.favicons.run) {
+		gulp.watch(paths.favicons.watch, favs);
+	}
+
+	if (options.svg.run) {
+		gulp.watch(paths.svg.watch, svg);
+	}
+
 	gulp.watch(paths.styles.watch, styles);
 	gulp.watch(paths.scripts.watch, scripts);
 	gulp.watch(paths.images.watch, images);
 	gulp.watch(paths.webp.watch, webp);
-	gulp.watch(paths.favicons.watch, favs);
-	gulp.watch(paths.svg.watch, svg);
 };
 
 export { server };

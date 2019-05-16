@@ -13,10 +13,18 @@ import { server } from "./server";
 
 import { config } from "./helpers/gulp.config";
 
-const tasks = [styles, scripts, images, webp, fonts, favs, svg];
+const tasks = [styles, scripts, images, webp, fonts];
 
 if (config.options.views.run) {
 	tasks.push(views);
+}
+
+if (config.options.favicons.run) {
+	tasks.push(favs);
+}
+
+if (config.options.svg.run) {
+	tasks.push(svg);
 }
 
 const develop = gulp.series(
