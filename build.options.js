@@ -4,6 +4,9 @@ const options = {
 		dist: "",
 	},
 	browserSync: {},
+	views: {
+		run: false,
+	},
 };
 
 export { options };

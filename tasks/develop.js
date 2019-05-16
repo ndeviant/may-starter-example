@@ -11,9 +11,17 @@ import { views } from "./views";
 import { webp } from "./webp";
 import { server } from "./server";
 
+import { config } from "./helpers/gulp.config";
+
+const tasks = [styles, scripts, images, webp, fonts, favs, svg];
+
+if (config.options.views.run) {
+	tasks.push(views);
+}
+
 const develop = gulp.series(
 	cleanFiles,
-	gulp.parallel(views, styles, scripts, images, webp, fonts, favs, svg),
+	gulp.parallel(...tasks),
 	gulp.parallel(server),
 );
 

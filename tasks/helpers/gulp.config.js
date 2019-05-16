@@ -1,16 +1,29 @@
-import { options } from "../../build.options";
+import { options as userOptions } from "../../build.options";
+
+const {
+	root: userRoot,
+	browserSync: userBrowserSync,
+	...restOptions
+} = userOptions;
 
 const root = {
-	src: options.root.src || "./src",
-	dist: options.root.dist || "./dist",
+	src: userRoot.src || "./src",
+	dist: userRoot.dist || "./dist",
 };
 
 const bsyncConfig = {
 	server: root.dist,
 	notify: false,
-	online: !!options.browserSync.tunnel,
+	online: !!userBrowserSync.tunnel,
 	middleware: [],
-	...options.browserSync,
+	...userBrowserSync,
+};
+
+const options = {
+	views: {
+		run: true,
+		...restOptions.views,
+	},
 };
 
 const paths = {
@@ -72,6 +85,7 @@ const config = {
 	root,
 	bsyncConfig,
 	paths,
+	options,
 };
 
 export { config };

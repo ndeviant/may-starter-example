@@ -10,11 +10,11 @@ import { styles } from "./styles";
 import { svg } from "./svg";
 import { views } from "./views";
 import { webp } from "./webp";
+import { config } from "./helpers/gulp.config";
 
-const build = gulp.series(
+const tasks = [
 	cleanFiles,
 	htaccess,
-	views,
 	styles,
 	scripts,
 	images,
@@ -22,6 +22,12 @@ const build = gulp.series(
 	fonts,
 	favs,
 	svg,
-);
+];
+
+if (config.options.views.run) {
+	tasks.push(views);
+}
+
+const build = gulp.series(...tasks);
 
 export { build };

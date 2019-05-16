@@ -11,12 +11,15 @@ import { webp } from "./webp";
 
 import { config } from "./helpers/gulp.config";
 
-const { bsyncConfig, paths } = config;
+const { bsyncConfig, paths, options } = config;
 
 const server = () => {
 	browsersync.init(bsyncConfig);
 
-	gulp.watch(paths.views.watch, views);
+	if (options.views.run) {
+		gulp.watch(paths.views.watch, views);
+	}
+
 	gulp.watch(paths.styles.watch, styles);
 	gulp.watch(paths.scripts.watch, scripts);
 	gulp.watch(paths.images.watch, images);
