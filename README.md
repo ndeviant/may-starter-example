@@ -6,7 +6,7 @@
 
 - сборка предназначена для автоматизации задач в повседневной front-end разработке
 - именование классов по [БЭМ](https://ru.bem.info/)
-- использование шаблонизатора [twig](https://mozilla.github.io/nunjucks/)
+- использование шаблонизатора [twig](https://twig.symfony.com/)
 - использование препроцессора [SCSS](https://sass-lang.com/)
 - использование транспайлера [Babel](https://babeljs.io/) для поддержки современного JavaScript (ES6) в браузерах
 - использование [Webpack](https://webpack.js.org/) для сборки JavaScript-модулей
@@ -35,62 +35,69 @@ twig-bem-starter
 ├── src
 │   ├── components
 │   ├── fonts
-│   ├── img
+│   ├── images
 │   ├── js
 │   ├── sass
 │   ├── views
 │   └── .htaccess
 ├── gulpfile.babel.js
-├── webpack.config.js
+├── gulp.options.js
+├── webpack.config.babel.js
 ├── package.json
+├── template.data.js
 ├── .babelrc.js
 ├── .bemrc.js
 ├── .eslintrc.json
 └── .gitignore
+└── .prettierrc.js
+└── .stylelintrc.js
 ```
 
 - Корень папки:
-  _ `.babelrc.js` — настройка ES6
-  _ `.bemrc.js` — настройка БЭМ
-  _ `.eslintrc.js` — настройка ESLint
-  _ `.prettierrc.js` — настройка ESLint
-  _ `.gitignore` – запрет на отслеживание файлов Git'ом
-  _ `gulpfile.babel.js` — настройки Gulp
-  \_ `webpack.config.js` — настройки Webpack \* `package.json` — список зависимостей
+  - `.babelrc.js` — настройка ES6
+  - `.bemrc.js` — настройка БЭМ
+  - `.eslintrc.js` — настройка ESLint
+  - `.prettierrc.js` — настройка ESLint
+  - `.stylelintrc.js` — настройка Stylelint
+  - `.gitignore` – запрет на отслеживание файлов Git'ом
+  - `gulpfile.babel.js` — задачи Gulp
+  - `gulp.options.js` — настройки Gulp
+  - `template.data.js` — Данные для шаблонов
+  - `webpack.config.js` — настройки Webpack \* `package.json` — список зависимостей
 - Папка `src` - используется во время разработки:
-  _ БЭМ-блоки и компоненты: `src/components`
-  _ шрифты: `src/fonts`
-  _ изображения: `src/img`
-  _ JS-файлы: `src/js`
-  _ SCSS-файлы: `src/styles`
-  _ Twig-файлы: `src/views`
-  _ страницы сайта: `src/views/pages`
-  _ конфигурационный файл веб-сервера Apache с настройками [gzip](https://habr.com/ru/post/221849/) (сжатие без потерь): `src/.htaccess`
+  - БЭМ-блоки и компоненты: `src/components`
+  - шрифты: `src/fonts`
+  - изображения: `src/images`
+  - JS-файлы: `src/js`
+  - SCSS-файлы: `src/styles`
+  - Twig-файлы: `src/views`
+  - страницы сайта: `src/views/pages`
+  - конфигурационный файл веб-сервера Apache с настройками [gzip](https://habr.com/ru/post/221849/) (сжатие без потерь): `src/.htaccess`
 - Папка `dist` - папка, из которой запускается локальный сервер для разработки (при запуске `yarn run dev`)
 
 ## Рекомендации по использованию
 
 - придерживайтесь изначальной структуры папок и файлов
 - придерживайтесь компонентного подхода к разработке сайтов
-  _ каждый БЭМ-блок имеет свою папку внутри `src/components/modules`
-  _ папка одного БЭМ-блока содержит в себе один Twig-файл, один SCSS-файл и один JS-файл (если у блока используется скрипт)
-  \_ SCSS-файл блока импортируется в файл `src/components/modules/_modules.scss`, который в свою очередь импортируется в файл `src/styles/main.scss` \* JS-файл блока импортируется в `src/js/import/modules.js`, который в свою очередь импортируется в файл `src/js/index.js`
+  - каждый БЭМ-блок имеет свою папку внутри `src/components/modules`
+  - папка одного БЭМ-блока содержит в себе один Twig-файл, один SCSS-файл и один JS-файл (если у блока используется скрипт)
+  - SCSS-файл блока импортируется в файл `src/components/modules/_modules.scss`, который в свою очередь импортируется в файл `src/styles/main.scss` \* JS-файл блока импортируется в `src/js/import/modules.js`, который в свою очередь импортируется в файл `src/js/index.js`
 - компоненты (например, иконки, кнопки) оформляются в Twig с помощью примесей
-  _ каждый компонент имеет свою папку внутри `src/components/components`
-  _ папка одного компонента содержит в себе один Twig-файл, один SCSS-файл и один JS-файл
-  _ Twig-файл компонента импортируется в файл `src/views/layouts/default.pug`, который в свою очередь импортируется в файл `src/views/index.pug`
-  _ SCSS-файл компонента импортируется в файл `src/components/components/_components.scss`, который в свою очередь импортируется в файл `src/styles/main.scss` \* JS-файл компонента импортируется в файл `src/js/import/components.js`, который в свою очередь импортируется в файл `src/js/index.js`
+  - каждый компонент имеет свою папку внутри `src/components/components`
+  - папка одного компонента содержит в себе один Twig-файл, один SCSS-файл и один JS-файл
+  - Twig-файл компонента импортируется в файл `src/views/layouts/default.pug`, который в свою очередь импортируется в файл `src/views/index.pug`
+  - SCSS-файл компонента импортируется в файл `src/components/components/_components.scss`, который в свою очередь импортируется в файл `src/styles/main.scss` \* JS-файл компонента импортируется в файл `src/js/import/components.js`, который в свою очередь импортируется в файл `src/js/index.js`
 - из всех SCSS-файлов компилируется только `main.scss`. Остальные стилевые файлы импортируются в него
 - страницы сайта находятся в папке `src/pages`
-  _ каждая страница (в том числе главная) наследует шаблон `src/views/layouts/default.pug`
-  _ главная страница: `src/views/index.pug`
+  - каждая страница (в том числе главная) наследует шаблон `src/views/layouts/default.pug`
+  - главная страница: `src/views/index.pug`
 - шрифты находятся в папке `src/fonts`
-- изображения находятся в папке `src/img` \* изображение для генерации фавиконок должно находиться в папке `src/img` и иметь размер не менее `100px x 100px`
+- изображения находятся в папке `src/images` \* изображение для генерации фавиконок должно находиться в папке `src/images` и иметь размер не менее `100px x 100px`
 - все сторонние библиотеки устанавливаются в папку `node_modules`
-  _ для их загрузки воспользуйтеcь командой `yarn add package_name`
-  _ для подключения JS-файлов библиотек импортируйте их в JS-файл БЭМ-блока (то есть тот БЭМ-блок, который использует скрипт), например:
-  `javascript import $ from "jquery";` \* для подключения стилевых файлов библиотек импортируйте их в файл `src/styles/_libs.scss` (который в свою очередь импортируется в файл
-  `src/styles/main.scss`)
+  - для их загрузки воспользуйтеcь командой `yarn add package_name`
+  - для подключения JS-файлов библиотек импортируйте их в JS-файл БЭМ-блока (то есть тот БЭМ-блок, который использует скрипт), например:
+    `javascript import $ from "jquery";` \* для подключения стилевых файлов библиотек импортируйте их в файл `src/styles/_libs.scss` (который в свою очередь импортируется в файл
+    `src/styles/main.scss`)
 - в вёрстку подключаются только минифицированные CSS и JS-файлы.
 
 ## БЭМ
