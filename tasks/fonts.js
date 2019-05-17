@@ -5,7 +5,7 @@ import { config } from "./helpers/gulp.config";
 
 const fonts = () =>
 	gulp
-		.src(config.tasks.fonts.src)
+		.src(config.tasks.fonts.src, { read: false })
 		.pipe(gulp.dest(config.tasks.fonts.dist))
 		.pipe(
 			debug({
