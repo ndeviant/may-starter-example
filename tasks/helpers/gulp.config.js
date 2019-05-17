@@ -1,4 +1,4 @@
-import { options as userOptions } from "../../build.options";
+import { options as userOptions } from "../../gulp.options";
 
 const root = {
 	src: userOptions.root.src || "./src",
