@@ -24,6 +24,8 @@ body {
 	line-height: 1.5;
 	font-family: $font-family;
 	color: #000;
+	background-image: url("/assets/images/sprite.svg#svg-bg");
+	background-size: 10%;
 }
 
 a {
