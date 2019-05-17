@@ -11,27 +11,38 @@ import { webp } from "./webp";
 
 import { config } from "./helpers/gulp.config";
 
-const { bsyncConfig, paths, options } = config;
+const { bsyncConfig, tasks } = config;
 
 const server = () => {
 	browsersync.init(bsyncConfig);
 
-	if (options.views.run) {
-		gulp.watch(paths.views.watch, views);
+	if (tasks.views.run) {
+		gulp.watch(tasks.views.watch, views);
 	}
 
-	if (options.favicons.run) {
-		gulp.watch(paths.favicons.watch, favs);
+	if (tasks.styles.run) {
+		gulp.watch(tasks.styles.watch, styles);
 	}
 
-	if (options.svg.run) {
-		gulp.watch(paths.svg.watch, svg);
+	if (tasks.scripts.run) {
+		gulp.watch(tasks.scripts.watch, scripts);
 	}
 
-	gulp.watch(paths.styles.watch, styles);
-	gulp.watch(paths.scripts.watch, scripts);
-	gulp.watch(paths.images.watch, images);
-	gulp.watch(paths.webp.watch, webp);
+	if (tasks.images.run) {
+		gulp.watch(tasks.images.watch, images);
+	}
+
+	if (tasks.webp.run) {
+		gulp.watch(tasks.webp.watch, webp);
+	}
+
+	if (tasks.favs.run) {
+		gulp.watch(tasks.favs.watch, favs);
+	}
+
+	if (tasks.svg.run) {
+		gulp.watch(tasks.svg.watch, svg);
+	}
 };
 
 export { server };

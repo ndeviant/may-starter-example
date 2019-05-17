@@ -18,7 +18,7 @@ import { isProduction } from "./helpers/mode";
 
 const styles = () =>
 	gulp
-		.src(config.paths.styles.src)
+		.src(config.tasks.styles.src)
 		.pipe(gulpif(!isProduction, sourcemaps.init()))
 		.pipe(
 			plumber({
@@ -80,7 +80,7 @@ const styles = () =>
 		)
 		.pipe(plumber.stop())
 		.pipe(gulpif(!isProduction, sourcemaps.write("./maps/")))
-		.pipe(gulp.dest(config.paths.styles.dist))
+		.pipe(gulp.dest(config.tasks.styles.dist))
 		.pipe(
 			debug({
 				title: "CSS files",

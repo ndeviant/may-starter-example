@@ -9,7 +9,7 @@ import { config } from "./helpers/gulp.config";
 
 const svg = () =>
 	gulp
-		.src(config.paths.svg.src)
+		.src(config.tasks.svg.src)
 		.pipe(
 			plumber({
 				errorHandler: notify.onError(() => ({
@@ -42,7 +42,7 @@ const svg = () =>
 			}),
 		)
 		.pipe(plumber.stop())
-		.pipe(gulp.dest(config.paths.svg.dist))
+		.pipe(gulp.dest(config.tasks.svg.dist))
 		.pipe(
 			debug({
 				title: "Svg sprite",

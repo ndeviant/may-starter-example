@@ -12,7 +12,7 @@ import webpackConfig from "../webpack.config.babel";
 
 const scripts = () =>
 	gulp
-		.src(config.paths.scripts.src)
+		.src(config.tasks.scripts.src)
 		.pipe(
 			webpackStream(webpackConfig),
 			webpack,
@@ -25,7 +25,7 @@ const scripts = () =>
 				}),
 			),
 		)
-		.pipe(gulp.dest(config.paths.scripts.dist))
+		.pipe(gulp.dest(config.tasks.scripts.dist))
 		.pipe(
 			debug({
 				title: "JS files",

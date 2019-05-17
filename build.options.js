@@ -4,14 +4,37 @@ const options = {
 		dist: "",
 	},
 	browserSync: {},
-	views: {
-		run: true,
-	},
-	favicons: {
-		run: true,
-	},
-	svg: {
-		run: true,
+	tasks: {
+		cleanFiles: {
+			run: true,
+		},
+		htaccess: {
+			run: true,
+		},
+		views: {
+			run: true,
+		},
+		styles: {
+			run: true,
+		},
+		scripts: {
+			run: true,
+		},
+		images: {
+			run: true,
+		},
+		webp: {
+			run: true,
+		},
+		favs: {
+			run: true,
+		},
+		svg: {
+			run: true,
+		},
+		fonts: {
+			run: true,
+		},
 	},
 };
 

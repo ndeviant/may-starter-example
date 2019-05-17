@@ -16,7 +16,7 @@ import { isProduction } from "./helpers/mode";
 
 const images = () =>
 	gulp
-		.src(config.paths.images.src)
+		.src(config.tasks.images.src)
 		.pipe(
 			plumber({
 				errorHandler: notify.onError(() => ({
@@ -25,7 +25,7 @@ const images = () =>
 				})),
 			}),
 		)
-		.pipe(changed(config.paths.images.dist))
+		.pipe(changed(config.tasks.images.dist))
 		.pipe(
 			gulpif(
 				isProduction,
@@ -61,7 +61,7 @@ const images = () =>
 				]),
 			),
 		)
-		.pipe(gulp.dest(config.paths.images.dist))
+		.pipe(gulp.dest(config.tasks.images.dist))
 		.pipe(
 			debug({
 				title: "Images",

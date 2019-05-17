@@ -12,7 +12,7 @@ import data from "../template.data";
 
 const views = () =>
 	gulp
-		.src(config.paths.views.src)
+		.src(config.tasks.views.src)
 		.pipe(
 			plumber({
 				errorHandler: notify.onError(() => ({
@@ -30,7 +30,7 @@ const views = () =>
 		.pipe(gulpif(isProduction, replace("main.css", "main.min.css")))
 		.pipe(gulpif(isProduction, replace("vendor.js", "vendor.min.js")))
 		.pipe(gulpif(isProduction, replace("main.js", "main.min.js")))
-		.pipe(gulp.dest(config.paths.views.dist))
+		.pipe(gulp.dest(config.tasks.views.dist))
 		.on("end", browsersync.reload);
 
 export { views };

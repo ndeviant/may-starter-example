@@ -6,7 +6,7 @@ import { config } from "./helpers/gulp.config";
 
 const favs = () =>
 	gulp
-		.src(config.paths.favicons.src)
+		.src(config.tasks.favs.src)
 		.pipe(
 			favicons({
 				background: "transparent",
@@ -23,7 +23,7 @@ const favs = () =>
 				},
 			}),
 		)
-		.pipe(gulp.dest(config.paths.favicons.dist))
+		.pipe(gulp.dest(config.tasks.favs.dist))
 		.pipe(
 			debug({
 				title: "Favicons",

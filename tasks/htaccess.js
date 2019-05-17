@@ -5,8 +5,8 @@ import { config } from "./helpers/gulp.config";
 
 const htaccess = () =>
 	gulp
-		.src(config.paths.htaccess.src)
-		.pipe(gulp.dest(config.paths.htaccess.dist))
+		.src(config.tasks.htaccess.src)
+		.pipe(gulp.dest(config.tasks.htaccess.dist))
 		.pipe(
 			debug({
 				title: "Server config",

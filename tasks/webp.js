@@ -12,7 +12,7 @@ import { isProduction } from "./helpers/mode";
 
 const webp = () =>
 	gulp
-		.src(config.paths.webp.src)
+		.src(config.tasks.webp.src)
 		.pipe(
 			plumber({
 				errorHandler: notify.onError(() => ({
@@ -21,7 +21,7 @@ const webp = () =>
 				})),
 			}),
 		)
-		.pipe(changed(config.paths.webp.dist))
+		.pipe(changed(config.tasks.webp.dist))
 		.pipe(
 			gulpwebp(
 				gulpif(
@@ -34,7 +34,7 @@ const webp = () =>
 				),
 			),
 		)
-		.pipe(gulp.dest(config.paths.webp.dist))
+		.pipe(gulp.dest(config.tasks.webp.dist))
 		.pipe(
 			debug({
 				title: "WebP images",
