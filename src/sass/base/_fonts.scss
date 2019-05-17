@@ -1,2 +1,7 @@
+/**
+ * Bulletproof connect of fonts with formats "eot", "ttf", "woff".
+ * Please, use the current naming convention.
+ */
+
 @include font-face("Roboto", "../fonts/RobotoRegular/RobotoRegular");
 @include font-face("Roboto", "../fonts/RobotoBold/RobotoBold", bold);
