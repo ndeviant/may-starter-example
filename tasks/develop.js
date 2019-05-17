@@ -13,22 +13,22 @@ import { server } from "./server";
 
 import { config } from "./helpers/gulp.config";
 
-const { tasks: configTasks } = config;
+const { tasks } = config;
 
-const tasks = [
-	configTasks.views.run ? views : false,
-	configTasks.styles.run ? styles : false,
-	configTasks.scripts.run ? scripts : false,
-	configTasks.images.run ? images : false,
-	configTasks.webp.run ? webp : false,
-	configTasks.favs.run ? favs : false,
-	configTasks.svg.run ? svg : false,
-	configTasks.fonts.run ? fonts : false,
+const activeTasks = [
+	tasks.views.run ? views : false,
+	tasks.styles.run ? styles : false,
+	tasks.scripts.run ? scripts : false,
+	tasks.images.run ? images : false,
+	tasks.webp.run ? webp : false,
+	tasks.favs.run ? favs : false,
+	tasks.svg.run ? svg : false,
+	tasks.fonts.run ? fonts : false,
 ].filter(Boolean);
 
 const develop = gulp.series(
 	cleanFiles,
-	gulp.parallel(...tasks),
+	gulp.parallel(...activeTasks),
 	gulp.parallel(server),
 );
 
