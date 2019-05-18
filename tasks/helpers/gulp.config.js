@@ -5,6 +5,8 @@ const root = {
 	dist: userOptions.root.dist || "./dist",
 };
 
+root.assets = userOptions.root.assets || `${root.dist}/assets`;
+
 const bsyncConfig = {
 	server: root.dist,
 	notify: false,
@@ -27,14 +29,14 @@ const tasks = {
 	},
 	styles: {
 		src: `${root.src}/sass/main.scss`,
-		dist: `${root.dist}/assets/css/`,
+		dist: `${root.assets}/css/`,
 		watch: [`${root.src}/components/**/*.scss`, `${root.src}/sass/**/*.scss`],
 		run: true,
 		...userOptions.tasks.styles,
 	},
 	scripts: {
 		src: `${root.src}/js/index.js`,
-		dist: `${root.dist}/assets/js/`,
+		dist: `${root.assets}/js/`,
 		watch: [`${root.src}/components/**/*.js`, `${root.src}/js/**/*.js`],
 		run: true,
 		...userOptions.tasks.scripts,
@@ -56,28 +58,28 @@ const tasks = {
 	},
 	webp: {
 		src: `${root.src}/images/**/*_webp.{jpg,jpeg,png}`,
-		dist: `${root.dist}/assets/images/`,
+		dist: `${root.assets}/images/`,
 		watch: `${root.src}/images/**/*_webp.{jpg,jpeg,png}`,
 		run: true,
 		...userOptions.tasks.webp,
 	},
 	fonts: {
 		src: `${root.src}/fonts/**/*.{ttf,otf,woff,woff2}`,
-		dist: `${root.dist}/assets/fonts/`,
+		dist: `${root.assets}/fonts/`,
 		watch: `${root.src}/fonts/**/*.{ttf,otf,woff,woff2}`,
 		run: true,
 		...userOptions.tasks.fonts,
 	},
 	favs: {
 		src: `${root.src}/images/favicon.{jpg,jpeg,png,gif,svg}`,
-		dist: `${root.dist}/assets/images/favicons/`,
+		dist: `${root.assets}/images/favicons/`,
 		watch: `${root.src}/images/favicon.{jpg,jpeg,png,gif,svg}`,
 		run: true,
 		...userOptions.tasks.favs,
 	},
 	svg: {
 		src: `${root.src}/images/svg/*.svg`,
-		dist: `${root.dist}/assets/images/`,
+		dist: `${root.assets}/images/`,
 		watch: `${root.src}/images/svg/*.svg`,
 		run: true,
 		...userOptions.tasks.svg,
