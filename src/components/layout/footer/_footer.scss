@@ -1,6 +1,6 @@
 .footer {
 	background-color: $dark-background;
-	color: #ffffff;
+	color: #fff;
 	min-width: 100px;
 	padding-top: 15px;
 	padding-bottom: 15px;
@@ -8,6 +8,13 @@
 	&__container {
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
+	}
+
+	&__text {
+		margin-right: auto;
+	}
+
+	&__link {
+		padding: 0.5rem 0.75rem;
 	}
 }
