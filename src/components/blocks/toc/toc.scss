@@ -13,17 +13,6 @@
 			margin-bottom: 0;
 		}
 
-		ol {
-			counter-reset: item;
-		}
-
-		ul {
-			li::before {
-				content: "";
-				counter-increment: none;
-			}
-		}
-
 		li {
 			position: relative;
 			display: block;
@@ -34,18 +23,18 @@
 			&::before {
 				content: counters(item, ".");
 				counter-increment: item;
+				position: absolute;
 				font-size: 40px;
 				left: -52px;
 				top: -20px;
 				font-weight: 700;
-				color: #d4d4d4;
-				position: absolute;
+				color: #ddd;
 			}
 
 			li {
 				&::before {
 					font-size: 20px;
-					top: 0px;
+					top: 0;
 				}
 
 				&:last-child {
@@ -61,6 +50,17 @@
 				&:hover {
 					border-bottom-color: transparent;
 				}
+			}
+		}
+
+		ol {
+			counter-reset: item;
+		}
+
+		ul {
+			li::before {
+				content: "";
+				counter-increment: none;
 			}
 		}
 	}

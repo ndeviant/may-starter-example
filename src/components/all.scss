@@ -1,6 +1,7 @@
 // Layout
 @import "./layout/header/header";
 @import "./layout/footer/footer";
+@import "./layout/aside-layout/aside-layout";
 
 // Blocks
 @import "./blocks/banner/banner";
@@ -9,4 +10,5 @@
 
 // Sections
 @import "./sections/demo-section/demo-section";
+@import "./sections/post-listing/post-listing";
 @import "./sections/typo-section/typo-section";

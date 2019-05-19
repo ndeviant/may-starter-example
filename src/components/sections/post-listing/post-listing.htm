@@ -1,0 +1,21 @@
+<div class="post-listing">
+  <div class="container">
+    {% 
+      embed "../../layout/aside-layout/aside-layout.htm" 
+      with {
+        'content_class': 'post-listing__content', 
+        'content_attr': 'data-hui="pizda" data-jopa="jojo"',
+      }
+    %}
+      {% block right %}
+        Сайдбар
+      {% endblock %}
+
+      {% block content %}
+        {% for post in posts %}
+          {% include "../../blocks/post/post.htm" %}
+        {% endfor %}
+      {% endblock %}
+    {% endembed %}
+  </div>
+</div>

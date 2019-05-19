@@ -1,0 +1,53 @@
+.aside-btn {
+	display: block;
+	width: 100%;
+	margin-bottom: 20px;
+
+	@include media-breakpoint-up(sm) {
+		display: none;
+	}
+}
+
+.aside-layout {
+	display: flex;
+}
+
+.aside {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	transform: translateX(-100%);
+	transition: transform 0.3s;
+	z-index: 100;
+	border: 1px solid #f2f2f2;
+	background-color: #fff;
+	width: 300px;
+	padding: 10px 15px;
+	flex-shrink: 0;
+
+	@include media-breakpoint-up(sm) {
+		position: static;
+		transform: translateX(0);
+		height: auto;
+	}
+
+	// &__content {
+	// }
+
+	&--left {
+		@include media-breakpoint-up(sm) {
+			margin-right: 20px;
+		}
+	}
+
+	&--right {
+		@include media-breakpoint-up(sm) {
+			margin-left: 20px;
+		}
+	}
+
+	&--active {
+		transform: translateX(0);
+	}
+}

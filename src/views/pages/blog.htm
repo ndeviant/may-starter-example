@@ -4,9 +4,5 @@
 {% endblock %}
 
 {% block content %}
-  <div class="container">
-    {% for post in posts %}
-      {% include "components/blocks/post/post.htm" %}
-    {% endfor %}
-  </div>
+    {% include "components/sections/post-listing/post-listing.htm" %}
 {% endblock %}

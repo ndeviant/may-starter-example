@@ -1,6 +1,7 @@
 // Layout
 import "./layout/header/header";
 import "./layout/footer/footer";
+import "./layout/aside-layout/aside-layout";
 
 // Blocks
 import "./blocks/banner/banner";

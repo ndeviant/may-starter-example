@@ -6,22 +6,21 @@ $grid-columns: 12;
 
 $grid-breakpoints: (
 	xxxs: 0,
-	xxs: 414px,
-	xs: 568px,
-	sm: 667px,
+	xxs: 360px,
+	xs: 414px,
+	sm: 576px,
 	md: 768px,
 	lg: 992px,
 	xl: 1200px,
-	xxl: 1600px,
+	xxl: 1600px
 );
 
 $container-max-widths: (
-	xs: 568px,
-	sm: 667px,
+	sm: 576px,
 	md: 768px,
 	lg: 992px,
 	xl: 1200px,
-	xxl: 1600px,
+	xxl: 1600px
 );
 
 $gutter: $grid-gutter-width;

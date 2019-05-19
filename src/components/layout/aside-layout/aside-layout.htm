@@ -1,0 +1,28 @@
+{% if block('left') is defined %}
+  <button class="aside-btn aside-btn--left btn" data-aside="aside--left">
+    Left sidebar
+  </button>
+{% endif %}
+{% if block('right') is defined %}
+  <button class="aside-btn aside-btn--right btn" data-aside="aside--right">
+    Right sidebar
+  </button>
+{% endif %}
+
+<div class="aside-layout {{layout_class}}" {{layout_attr}}>
+  {% if block('left') is defined %}
+    <aside class="aside aside--left {{left_class}}" {{left_attr}}>
+      {% block left %}{% endblock %}
+    </aside>
+  {% endif %}
+
+  <div class="aside__content {{content_class}}" {{content_attr}}>
+    {% block content %}{% endblock %}
+  </div>
+
+  {% if block('right') is defined %}
+    <aside class="aside aside--right {{right_class}}" {{right_attr}}>
+      {% block right %}{% endblock %}
+    </aside>
+  {% endif %}
+</div>
