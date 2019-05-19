@@ -9,7 +9,7 @@
 	"license": "MIT",
 	"scripts": {
 		"start": "gulp",
-		"build": "cross-env NODE_ENV=production gulp build"
+		"build": "gulp build --production"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.4.0",
@@ -21,7 +21,6 @@
 		"bem-tools-core": "bem-tools/bem-tools-core",
 		"bem-tools-create": "bem-tools/bem-tools-create",
 		"browser-sync": "^2.26.3",
-		"cross-env": "^5.2.0",
 		"css-mqpacker": "^7.0.0",
 		"eslint": "^5.16.0",
 		"eslint-config-airbnb-base": "^13.1.0",
@@ -60,7 +59,8 @@
 		"stylelint-config-prettier": "^5.2.0",
 		"stylelint-config-standard": "^18.3.0",
 		"webpack": "^4.29.6",
-		"webpack-stream": "^5.2.1"
+		"webpack-stream": "^5.2.1",
+		"yargs": "^13.2.4"
 	},
 	"dependencies": {
 		"bootstrap": "^4.3.1",

@@ -12,7 +12,7 @@ import imageminMozjpeg from "imagemin-mozjpeg";
 import imageminGiflossy from "imagemin-giflossy";
 
 import { config } from "./helpers/gulp.config";
-import { isProduction } from "./helpers/mode";
+import { isProduction } from "./helpers/isProduction";
 
 const images = () =>
 	gulp

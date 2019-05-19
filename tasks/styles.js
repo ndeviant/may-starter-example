@@ -14,7 +14,7 @@ import rename from "gulp-rename";
 import debug from "gulp-debug";
 
 import { config } from "./helpers/gulp.config";
-import { isProduction } from "./helpers/mode";
+import { isProduction } from "./helpers/isProduction";
 
 const styles = () =>
 	gulp

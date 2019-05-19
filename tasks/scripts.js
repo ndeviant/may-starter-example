@@ -7,7 +7,7 @@ import webpack from "webpack";
 import webpackStream from "webpack-stream";
 
 import { config } from "./helpers/gulp.config";
-import { isProduction } from "./helpers/mode";
+import { isProduction } from "./helpers/isProduction";
 import webpackConfig from "../webpack.config.babel";
 
 const scripts = () =>

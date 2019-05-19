@@ -1,4 +1,4 @@
-import { isProduction } from "./tasks/helpers/mode";
+import { isProduction } from "./tasks/helpers/isProduction";
 
 const webpackConfig = {
 	output: {
