@@ -20,7 +20,6 @@ const changeExt = () =>
 				})),
 			}),
 		)
-		.pipe()
 		.pipe(clean())
 		.pipe(
 			rename(path => {
