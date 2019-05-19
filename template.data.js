@@ -5,26 +5,32 @@ const data = {
 		{
 			title: "First post",
 			author: "John Doe",
-			img: "https://lorempixel.com/250/250/nature/2",
+			img: "./assets/images/media/blog1.jpg",
 			excerpt: "Some small description.",
 		},
 		{
 			title: "Second post",
 			author: "John Doe",
-			img: "https://lorempixel.com/250/250/nature/3",
+			img: "./assets/images/media/blog2.jpg",
 			excerpt:
 				"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad inventore laudantium optio illum laboriosam.",
 		},
 		{
 			title: "Third post",
 			author: "John Doe",
-			img: "https://lorempixel.com/250/250/nature/4",
+			img: "./assets/images/media/blog3.jpg",
 			excerpt: "Ad inventore laudantium optio illum laboriosam.",
 		},
 		{
 			title: "Fourth post",
 			author: "John Doe",
-			img: "https://lorempixel.com/250/250/nature/5",
+			img: "./assets/images/media/blog4.jpg",
+			excerpt: "Some small description.",
+		},
+		{
+			title: "Fifth post",
+			author: "John Doe",
+			img: "./assets/images/media/blog5.jpg",
 			excerpt: "Some small description.",
 		},
 	],
