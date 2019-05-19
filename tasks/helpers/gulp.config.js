@@ -56,9 +56,9 @@ const views = {
  */
 
 const styles = {
-	src: `${root.src}/sass/main.scss`,
+	src: `${root.src}/scss/main.scss`,
 	dist: `${root.assets}/css/`,
-	watch: [`${root.src}/components/**/*.scss`, `${root.src}/sass/**/*.scss`],
+	watch: [`${root.src}/components/**/*.scss`, `${root.src}/scss/**/*.scss`],
 	run: true,
 	...userOptions.tasks.styles,
 };

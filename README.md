@@ -39,7 +39,7 @@ twig-bem-starter
 │   │   ├── svg
 │   │   └── media
 │   ├── js
-│   ├── sass
+│   ├── scss
 │   ├── views
 │   └── .htaccess
 ├── gulpfile.babel.js
