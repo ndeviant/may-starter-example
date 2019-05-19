@@ -21,9 +21,9 @@ const tasks = {
 		...userOptions.tasks.cleanFiles,
 	},
 	views: {
-		src: [`${root.src}/views/pages/*.twig`],
+		src: [`${root.src}/views/pages/*.htm`],
 		dist: root.dist,
-		watch: [`${root.src}/components/**/*.twig`, `${root.src}/views/**/*.twig`],
+		watch: [`${root.src}/components/**/*.htm`, `${root.src}/views/**/*.htm`],
 		run: true,
 		...userOptions.tasks.views,
 	},
