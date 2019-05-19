@@ -15,7 +15,8 @@
     <div class="layout">
       {% include "components/layout/header/header.htm" %}
 
-      <main class="layout__main">
+      <main
+        class="layout__main {% block layout_main_class %}{% endblock %}">
         {# You write code for this content block in another file #}
         {% block content %}{% endblock %}
       </main>

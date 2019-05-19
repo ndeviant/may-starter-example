@@ -1,0 +1,13 @@
+.p404 {
+	text-align: right;
+
+	&__number {
+		font-size: 10rem;
+		font-weight: bold;
+		line-height: 1;
+	}
+
+	&__description {
+		color: rgba($text-color, 0.75);
+	}
+}
