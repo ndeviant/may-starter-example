@@ -1,11 +1,10 @@
 import gulp from "gulp";
 import gulpif from "gulp-if";
-import notify from "gulp-notify";
 import replace from "gulp-replace";
-import plumber from "gulp-plumber";
 import twig from "gulp-twig";
 import browsersync from "browser-sync";
 
+import { plumbed } from "./helpers/plumbed";
 import { config } from "./helpers/gulp.config";
 import { isProduction } from "./helpers/isProduction";
 import data from "../template.data";
@@ -13,14 +12,7 @@ import data from "../template.data";
 const views = () =>
 	gulp
 		.src(config.tasks.views.src)
-		.pipe(
-			plumber({
-				errorHandler: notify.onError(() => ({
-					title: "Views",
-					message: "Error: <%= error.message %>",
-				})),
-			}),
-		)
+		.pipe(plumbed("Views"))
 		.pipe(
 			twig({
 				base: `${config.root.src}/`,

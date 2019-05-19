@@ -3,24 +3,16 @@ import gulpif from "gulp-if";
 import changed from "gulp-changed";
 import imageminWebp from "imagemin-webp";
 import gulpwebp from "gulp-webp";
-import plumber from "gulp-plumber";
-import notify from "gulp-notify";
 import debug from "gulp-debug";
 
+import { plumbed } from "./helpers/plumbed";
 import { config } from "./helpers/gulp.config";
 import { isProduction } from "./helpers/isProduction";
 
 const webp = () =>
 	gulp
 		.src(config.tasks.webp.src)
-		.pipe(
-			plumber({
-				errorHandler: notify.onError(() => ({
-					title: "WebP",
-					message: "Error: <%= error.message %>",
-				})),
-			}),
-		)
+		.pipe(plumbed("WebP"))
 		.pipe(changed(config.tasks.webp.dist))
 		.pipe(
 			gulpwebp(

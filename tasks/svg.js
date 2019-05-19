@@ -1,23 +1,16 @@
 import gulp from "gulp";
-import notify from "gulp-notify";
 import plumber from "gulp-plumber";
 import debug from "gulp-debug";
 import svgSprite from "gulp-svg-sprite";
 import browsersync from "browser-sync";
 
+import { plumbed } from "./helpers/plumbed";
 import { config } from "./helpers/gulp.config";
 
 const svg = () =>
 	gulp
 		.src(config.tasks.svg.src)
-		.pipe(
-			plumber({
-				errorHandler: notify.onError(() => ({
-					title: "Svg",
-					message: "Error: <%= error.message %>",
-				})),
-			}),
-		)
+		.pipe(plumbed("Svg"))
 		.pipe(
 			svgSprite({
 				shape: {

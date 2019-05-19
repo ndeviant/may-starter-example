@@ -1,6 +1,5 @@
 import gulp from "gulp";
 import gulpif from "gulp-if";
-import notify from "gulp-notify";
 import plumber from "gulp-plumber";
 import browsersync from "browser-sync";
 import autoprefixer from "autoprefixer";
@@ -13,6 +12,7 @@ import sourcemaps from "gulp-sourcemaps";
 import rename from "gulp-rename";
 import debug from "gulp-debug";
 
+import { plumbed } from "./helpers/plumbed";
 import { config } from "./helpers/gulp.config";
 import { isProduction } from "./helpers/isProduction";
 
@@ -20,14 +20,7 @@ const styles = () =>
 	gulp
 		.src(config.tasks.styles.src)
 		.pipe(gulpif(!isProduction, sourcemaps.init()))
-		.pipe(
-			plumber({
-				errorHandler: notify.onError(() => ({
-					title: "Styles",
-					message: "Error: <%= error.message %>",
-				})),
-			}),
-		)
+		.pipe(plumbed("Styles"))
 		.pipe(
 			sass({
 				includePaths: ["./node_modules"],

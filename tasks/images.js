@@ -2,8 +2,6 @@ import gulp from "gulp";
 import gulpif from "gulp-if";
 import browsersync from "browser-sync";
 import debug from "gulp-debug";
-import plumber from "gulp-plumber";
-import notify from "gulp-notify";
 import changed from "gulp-changed";
 import imagemin from "gulp-imagemin";
 import imageminPngquant from "imagemin-pngquant";
@@ -11,20 +9,14 @@ import imageminZopfli from "imagemin-zopfli";
 import imageminMozjpeg from "imagemin-mozjpeg";
 import imageminGiflossy from "imagemin-giflossy";
 
+import { plumbed } from "./helpers/plumbed";
 import { config } from "./helpers/gulp.config";
 import { isProduction } from "./helpers/isProduction";
 
 const images = () =>
 	gulp
 		.src(config.tasks.images.src)
-		.pipe(
-			plumber({
-				errorHandler: notify.onError(() => ({
-					title: "Images",
-					message: "Error: <%= error.message %>",
-				})),
-			}),
-		)
+		.pipe(plumbed("Images"))
 		.pipe(changed(config.tasks.images.dist))
 		.pipe(
 			gulpif(
