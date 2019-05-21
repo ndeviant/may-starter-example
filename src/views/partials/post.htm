@@ -1,9 +1,9 @@
 <div class="post">
-  <a href="/typography" class="post__img-link">
-    <img class="post__img" src="{{ post.img }}" alt="{{ post.title }}" />
+  <a href="{{ "typography" | page }}" class="post__img-link">
+    <img class="post__img" src="{{ post.img | media }}" alt="{{ post.title }}" />
   </a>
   <div class="post__meta">
-    <a class="post__title h5" href="/typography">{{ post.title }}</a>
+    <a class="post__title h5" href="{{ "typography" | page }}">{{ post.title }}</a>
     <p class="post__author">{{ post.author }}</p>
     <p class="post__excerpt">{{ post.excerpt }}</p>
   </div>

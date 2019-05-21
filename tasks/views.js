@@ -8,6 +8,7 @@ import { plumbed } from "./helpers/plumbed";
 import { config } from "./helpers/gulp.config";
 import { isProduction } from "./helpers/isProduction";
 import data from "../template.data";
+import filters from "./helpers/octoberFilters";
 
 const views = () =>
 	gulp
@@ -17,6 +18,7 @@ const views = () =>
 			twig({
 				base: `${config.root.src}/views/`,
 				data,
+				filters,
 			}),
 		)
 		.pipe(gulpif(isProduction, replace("main.css", "main.min.css")))

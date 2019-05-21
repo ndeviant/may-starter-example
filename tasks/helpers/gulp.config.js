@@ -18,12 +18,7 @@ root.assets = userOptions.root.assets || `${root.dist}/assets`;
  */
 
 const bsyncConfig = {
-	server: {
-		baseDir: root.dist,
-		serveStaticOptions: {
-			extensions: ["html"],
-		},
-	},
+	server: root.dist,
 	notify: false,
 	online: !!userOptions.browserSync.tunnel,
 	middleware: [],

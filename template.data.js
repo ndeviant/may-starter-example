@@ -5,32 +5,32 @@ const data = {
 		{
 			title: "First post",
 			author: "John Doe",
-			img: "./assets//media/blog1.jpg",
+			img: "blog1.jpg",
 			excerpt: "Some small description.",
 		},
 		{
 			title: "Second post",
 			author: "John Doe",
-			img: "./assets//media/blog2.jpg",
+			img: "blog2.jpg",
 			excerpt:
 				"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad inventore laudantium optio illum laboriosam.",
 		},
 		{
 			title: "Third post",
 			author: "John Doe",
-			img: "./assets//media/blog3.jpg",
+			img: "blog3.jpg",
 			excerpt: "Ad inventore laudantium optio illum laboriosam.",
 		},
 		{
 			title: "Fourth post",
 			author: "John Doe",
-			img: "./assets//media/blog4.jpg",
+			img: "blog4.jpg",
 			excerpt: "Some small description.",
 		},
 		{
 			title: "Fifth post",
 			author: "John Doe",
-			img: "./assets//media/blog5.jpg",
+			img: "blog5.jpg",
 			excerpt: "Some small description.",
 		},
 	],

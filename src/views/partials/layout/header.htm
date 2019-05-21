@@ -1,14 +1,14 @@
 <header class="header layout__header">
   <div class="header__container container">
-    <a class="header__logo" href="/">
+    <a class="header__logo" href="{{ '' | page }}">
       <svg class="header__logo-img">
-        <use xlink:href="./assets/images/sprite.svg#svg-logo"></use>
+        <use xlink:href="{{ "assets/images/sprite.svg#svg-logo" | theme }}"></use>
       </svg>
     </a>
     <nav class="header__nav">
-      <a class="header__nav-link" href="/blog">Блог</a>
-      <a class="header__nav-link" href="/typography">Типографика</a>
-      <a class="header__nav-link" href="/404">404</a>
+      <a class="header__nav-link" href="{{ "blog" | page }}">Блог</a>
+      <a class="header__nav-link" href="{{ "typography" | page }}">Типографика</a>
+      <a class="header__nav-link" href="{{ "404" | page }}">404</a>
     </nav>
   </div>
 </header>
