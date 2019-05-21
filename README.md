@@ -66,6 +66,7 @@ twig-bem-starter
 - Папка `src` - используется во время разработки:
   - шрифты: `src/fonts`
   - изображения: `src/images`
+  - медиа файлы, для последующего удаления: `src/media`
   - JS-файлы: `src/js`
   - SCSS-файлы: `src/styles`
   - Twig-файлы: `src/views`
@@ -83,7 +84,7 @@ twig-bem-starter
 - страницы сайта находятся в папке `src/pages`
   - каждая страница (в том числе главная) наследует шаблон `src/views/layouts/default.htm`
   - главная страница: `src/views/pages/index.htm`
-- шрифты находятся в папке `src/fonts`, подключаются `ttf`, `woff` и `woof2` файлы
+- шрифты находятся в папке `src/fonts`, подключаются `ttf`, `woff` и `woof2` форматы
 - изображения находятся в папке `src/images`
   - изображение для генерации фавиконок должно находиться в папке `src/images` и иметь размер не менее `100px x 100px`.
   - иконки из папки `src/images/svg` собираются в один svg спрайт `dist/assets/images/sprite.svg`.
@@ -97,7 +98,7 @@ twig-bem-starter
 
 ## Svg спрайт
 
-Сборка собирает все svg, из папки `src/images/svg` в один спрайт, который можно использовать через `use` тег. Добавлен полифил для поддержки синтаксиса `<use xlink:href="./assets/images/sprite.svg#svg-logo">` на ie11, для удобного использования, и правильного кеширования. Подробная информация по использованию [тут](https://css-tricks.com/svg-sprites-use-better-icon-fonts/).
+Сборка собирает все svg, из папки `src/images/svg` в один спрайт, который можно использовать через `use` тег. Добавлен полифил для поддержки синтаксиса `<use xlink:href="./assets/images/sprite.svg#svg-logo">` на ie11, для удобного использования, и правильного кеширования. Id для svg стоится так `svg-*имя файла*`. Подробная информация по использованию [тут](https://css-tricks.com/svg-sprites-use-better-icon-fonts/).
 
 ## Favicon
 
