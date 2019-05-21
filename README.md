@@ -47,7 +47,6 @@ twig-bem-starter
 ├── package.json
 ├── template.data.js
 ├── .babelrc.js
-├── .bemrc.js
 ├── .eslintrc.json
 ├── .gitignore
 ├── .prettierrc.js
@@ -56,7 +55,6 @@ twig-bem-starter
 
 - Корень папки:
   - `.babelrc.js` — настройка ES6
-  - `.bemrc.js` — настройка БЭМ
   - `.eslintrc.js` — настройка ESLint
   - `.prettierrc.js` — настройка ESLint
   - `.stylelintrc.js` — настройка Stylelint
