@@ -13,11 +13,17 @@ root.assets = userOptions.root.assets || `${root.dist}/assets`;
 
 /**
  * Bsync config:
- * Serve dist dir, disables nitifies, disables online, unless tunnel is on
+ * Serve dist dir without `html` extension,
+ * disables notifies, disables online, unless tunnel is on
  */
 
 const bsyncConfig = {
-	server: root.dist,
+	server: {
+		baseDir: root.dist,
+		serveStaticOptions: {
+			extensions: ["html"],
+		},
+	},
 	notify: false,
 	online: !!userOptions.browserSync.tunnel,
 	middleware: [],
