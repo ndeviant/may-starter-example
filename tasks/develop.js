@@ -9,6 +9,7 @@ import { styles } from "./styles";
 import { svg } from "./svg";
 import { views } from "./views";
 import { webp } from "./webp";
+import { media } from "./media";
 import { server } from "./server";
 
 import { config } from "./helpers/gulp.config";
@@ -24,6 +25,7 @@ const activeTasks = [
 	tasks.favs.run ? favs : false,
 	tasks.svg.run ? svg : false,
 	tasks.fonts.run ? fonts : false,
+	tasks.media.run ? media : false,
 ].filter(Boolean);
 
 const develop = gulp.series(

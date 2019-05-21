@@ -1,3 +1,5 @@
 import "./vendor";
 
-import "./import/components";
+import "./layout/aside-layout";
+
+import "./sections/demo-section";

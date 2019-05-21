@@ -12,6 +12,7 @@ export { styles } from "./tasks/styles";
 export { svg } from "./tasks/svg";
 export { views } from "./tasks/views";
 export { webp } from "./tasks/webp";
+export { media } from "./tasks/media";
 
 // Higher level tasks
 export { server } from "./tasks/server";

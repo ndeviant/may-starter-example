@@ -145,6 +145,17 @@ const svg = {
 svg.watch = userOptions.tasks.svg.watch || svg.src;
 
 /**
+ * Media
+ */
+
+const media = {
+	src: `${root.src}/media/**/*`,
+	dist: `${root.assets}/media/`,
+	run: true,
+	...userOptions.tasks.media,
+};
+
+/**
  * Htaccess
  */
 
@@ -169,6 +180,7 @@ const tasks = {
 	fonts,
 	favs,
 	svg,
+	media,
 	htaccess,
 };
 

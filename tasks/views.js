@@ -15,7 +15,7 @@ const views = () =>
 		.pipe(plumbed("Views"))
 		.pipe(
 			twig({
-				base: `${config.root.src}/`,
+				base: `${config.root.src}/views/`,
 				data,
 			}),
 		)

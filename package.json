@@ -18,8 +18,6 @@
 		"autoprefixer": "^9.5.1",
 		"babel-eslint": "^10.0.1",
 		"babel-loader": "^8.0.6",
-		"bem-tools-core": "bem-tools/bem-tools-core",
-		"bem-tools-create": "bem-tools/bem-tools-create",
 		"browser-sync": "^2.26.5",
 		"css-mqpacker": "^7.0.0",
 		"eslint": "^5.16.0",

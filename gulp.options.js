@@ -49,6 +49,7 @@ const tasks = {
 	favs: {},
 	svg: {},
 	fonts: {},
+	media: {},
 };
 
 const options = {

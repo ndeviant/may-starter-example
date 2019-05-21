@@ -1,8 +1,8 @@
-{% extends "views/layouts/default.htm" %}
+{% extends "layouts/default.htm" %}
 {% block title %}
   <title>Blog | {{ title }}</title>
 {% endblock %}
 
 {% block content %}
-    {% include "components/sections/post-listing/post-listing.htm" %}
+    {% include "partials/sections/post-listing.htm" %}
 {% endblock %}
