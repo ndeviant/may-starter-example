@@ -7,14 +7,14 @@ import { options as userOptions } from "../../gulp.options";
 const root = {
 	src: userOptions.root.src || "./src",
 	dist: userOptions.root.dist || "./dist",
+	assets: "",
 };
 
 root.assets = userOptions.root.assets || `${root.dist}/assets`;
 
 /**
  * Bsync config:
- * Serve dist dir without `html` extension,
- * disables notifies, disables online, unless tunnel is on
+ * Disables online, unless tunnel is on, for better performanse;
  */
 
 const bsyncConfig = {
