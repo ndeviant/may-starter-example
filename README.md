@@ -2,32 +2,32 @@
 
 # twig-bem-starter
 
-## Особенности
+## Features
 
-- сборка предназначена для автоматизации задач в повседневной front-end разработке
-- именование классов по [БЭМ](https://ru.bem.info/)
-- использование шаблонизатора [twig](https://twig.symfony.com/)
-- использование препроцессора [SCSS](https://sass-lang.com/)
-- использование транспайлера [Babel](https://babeljs.io/) для поддержки современного JavaScript (ES6) в браузерах
-- использование [Webpack](https://webpack.js.org/) для сборки JavaScript-модулей
+- build is designed to automate tasks in everyday front-end development
+- naming classes according to [BEM](https://ru.bem.info/)
+- using the template engine [twig](https://twig.symfony.com/)
+- using the preprocessor [SCSS](https://sass-lang.com/)
+- using the transpiler [Babel](https://babeljs.io/) to support modern JavaScript (ES6) in browsers
+- use [Webpack](https://webpack.js.org/) to build JavaScript modules
 
-## Установка
+## Installation
 
-- установите [Yarn](https://yarnpkg.com/en/docs/install)
+- install [Yarn](https://yarnpkg.com/en/docs/install)
 
-> Yarn - это современная альтернатива npm. Yarn работает с тем же файлом `package.json` и так же скачивает необходимые модули в папку `node_modules`, но делает это намного быстрее.
+> Yarn is a modern alternative to npm. Yarn works with the same `package.json` file and also downloads the necessary modules to the `node_modules` folder, but does it much faster.
 
-- скачайте сборку: `git clone https://github.com/ndeviant/twig-bem-starter.git`
-- установите `gulp` глобально: `yarn global add gulp-cli`
-- перейдите в скачанную папку со сборкой: `cd twig-bem-starter`
-- скачайте необходимые зависимости: `yarn`
-- чтобы начать работу, введите команду: `yarn start` (режим разработки)
-- чтобы собрать проект, введите команду `yarn build` (режим сборки)
+- download the build: `git clone https://github.com/ndeviant/twig-bem-starter.git`
+- install`gulp` globally: `yarn global add gulp-cli`
+- go to the downloaded folder with the build:`cd twig-bem-starter`
+- download the necessary dependencies: `yarn`
+- to get started, enter the command:`yarn start` (development mode)
+- to build a project, enter the command `yarn build` (build mode)
 
-Если вы всё сделали правильно, у вас должен открыться браузер с локальным сервером.
-Режим сборки предполагает оптимизацию проекта: сжатие изображений, минифицирование CSS и JS-файлов для загрузки на сервер.
+If you did everything right , you should open a browser with a local server.
+The build mode implies project optimization: image compression, minification of CSS and JS files for uploading to the server.
 
-## Файловая структура
+## File structure
 
 ```
 twig-bem-starter
@@ -53,63 +53,61 @@ twig-bem-starter
 └── .stylelintrc.js
 ```
 
-- Корень папки:
-  - `.babelrc.js` — настройка ES6
-  - `.eslintrc.js` — настройка ESLint
-  - `.prettierrc.js` — настройка ESLint
-  - `.stylelintrc.js` — настройка Stylelint
-  - `.gitignore` – запрет на отслеживание файлов Git'ом
-  - `gulpfile.babel.js` — задачи Gulp
-  - `gulp.options.js` — настройки Gulp
-  - `template.data.js` — Данные для шаблонов
-  - `webpack.config.js` — настройки Webpack `package.json` — список зависимостей
-- Папка `src` - используется во время разработки:
-  - шрифты: `src/fonts`
-  - изображения: `src/images`
-  - медиа файлы, для последующего удаления: `src/media`
-  - JS-файлы: `src/js`
-  - SCSS-файлы: `src/styles`
-  - Twig-файлы: `src/views`
-  - страницы сайта: `src/views/pages`
-  - конфигурационный файл веб-сервера Apache с настройками [gzip](https://habr.com/ru/post/221849/) (сжатие без потерь): `src/.htaccess`
-- Папка `dist` - папка, из которой запускается локальный сервер для разработки (при запуске `yarn run dev`)
+- Root folder:
+  - `.babelrc.js` — es6 setup
+  - `.eslintrc.js` — configure ESLint
+  - `.prettierrc.js` — configure ESLint
+  - `.stylelintrc.js` — configure Stylelint
+  - `.gitignore` – a ban on tracking files Git
+  - `gulpfile.babel.js` — gulp problems
+  - `gulp.options.js` — Gulp settings
+  - `template.data.js` — Data for templates
+  - `webpack.config.js` — webpack `package settings.json` — list of dependencies
+- Folder `src` - used during development:
+  - fonts: `src/fonts`
+  - images: `src/images`
+  - media files, to be deleted: `src/media`
+  - JS files: `src/js`
+  - SCSS files: `src/styles`
+  - Twig files: `src/views`
+  - site pages: `src/views/pages`
+  - Apache web server configuration file with settings [gzip](https://habr.com/ru/post/221849/) (lossless compression): `src/.htaccess`
+- Folder `dist` folder from which you run a local server for development purposes (when you run `yarn run dev`)
 
-## Рекомендации по использованию
+## Usage guidelines
 
-- придерживайтесь изначальной структуры папок и файлов
-- придерживайтесь компонентного подхода к разработке сайтов
-  - один БЭМ-блок содержит в себе один Twig-файл, один SCSS-файл и один JS-файл (если у блока используется скрипт)
-  - SCSS-файл блока импортируется в файл `src/styles/main.scss` JS-файл блока импортируется в `src/js/index.js`
-- из всех SCSS-файлов компилируется только `main.scss`. Остальные стилевые файлы импортируются в него
-- страницы сайта находятся в папке `src/pages`
-  - каждая страница (в том числе главная) наследует шаблон `src/views/layouts/default.htm`
-  - главная страница: `src/views/pages/index.htm`
-- шрифты находятся в папке `src/fonts`, подключаются `ttf`, `woff` и `woof2` форматы
-- изображения находятся в папке `src/images`
-  - изображение для генерации фавиконок должно находиться в папке `src/images` и иметь размер не менее `100px x 100px`.
-  - иконки из папки `src/images/svg` собираются в один svg спрайт `dist/assets/images/sprite.svg`.
-  - картинки которые в последствии будут грузится из CMS класть в папку `src/media`.
-- все сторонние библиотеки устанавливаются в папку `node_modules`
-  - для их загрузки воспользуйтеcь командой `yarn add package_name`
-  - для подключения JS-файлов библиотек импортируйте их в JS-файл БЭМ-блока (то есть тот БЭМ-блок, который использует скрипт), например:
-    `javascript import $ from "jquery";` для подключения стилевых файлов библиотек импортируйте их в файл `src/styles/_libs.scss` (который в свою очередь импортируется в файл
-    `src/styles/main.scss`)
-- в вёрстку подключаются только минифицированные CSS и JS-файлы.
+- stick to the original folder and file structure
+- stick component approach to the development of sites
+  - one BEM block contains one Twig file, one SCSS file and one JS file (if the block uses a script)
+  - SCSS-file of a block is imported to `src/styles/main.scss` file, JS-file is imported to `src/js/index.js`
+- from all SCSS files, only `main.scss` is compiled. Other style files are imported into it
+- pages located in the folder `src/pages`
+  - each page (including the main page) inherits the `src/views/layouts/default.htm` template
+  - main page: `src/views/pages/index.htm`
+- fonts are in `src/fonts` folder, use `ttf`, `woff` and `woof2` formats
+- images are in the folder `src/images`
+  - the image for generating favicons should be in the `src/images/` folder and have a size of at least `100px x 100px`.
+  - icons from `src/images/svg` folder are collected in one svg sprite `dist/assets/images/sprite.svg`.
+  - pictures that will later be loaded from the CMS put in the folder `src/media`.
+- all third-party libraries are installing in the `node_modules` folder
+  - to install another, use `yarn add [package_name]` command
+  - to connect library JS files, import them into a BEM block JS file (that is, the BEM block that the script uses), for example:
+    `javascript import $ from "jquery";` to connect library style files, import them into the `src/scss/vendor/[lib name].scss` (which in turn is imported into a file `src/styles/main.scss`)
+- only minified CSS and JS files are included in the layout.
 
-## Svg спрайт
+## Svg sprite
 
-Сборка собирает все svg, из папки `src/images/svg` в один спрайт, который можно использовать через `use` тег. Добавлен полифил для поддержки синтаксиса `<use xlink:href="./assets/images/sprite.svg#svg-logo">` на ie11, для удобного использования, и правильного кеширования. Id для svg стоится так `svg-*имя файла*`. Подробная информация по использованию [тут](https://css-tricks.com/svg-sprites-use-better-icon-fonts/).
+The build collects all svgs from the `src/images/svg` folder into a single sprite that can be used with the `use` tag. Polyfil were added to support the syntax `<use xlink:href="./assets/images/sprite.svg#svg-logo">` on ie11, for easy use, and proper caching. The Id for svg is `svg-[file name]`. Detailed information on the use of [here](https://css-tricks.com/svg-sprites-use-better-icon-fonts/).
 
 ## Favicon
 
-В сборщик включена автогенерация фавиконок. По умолчанию задача запускается вместе со сборкой, но есть возможность её выключить, через
-конфигурационный файл, задав ей `run: false` и сгенерировать фавиконки прямо в папку `src/images/favicons`, командой `gulp favs --toSrc`.
+Included in the starter auto-generated favicons. By default, the task starts with the Assembly, but you can turn it off by configuration file by setting it to `run: false` and generate favicons directly to `src/images/favicons` folder with `gulp favs --toSrc` command.
 
 ## WebP 
 
-В сборщик включена поддержка WebP. WebP — это формат графики, разработанный Google в 2010 году. Он был создан как альтернатива PNG и JPG и отличается от них гораздо меньшим размером при том же качестве изображения. Подробная информация по использованию [тут](https://vk.com/@vk_it-webp).
+Webp support is included in the starter. WebP is a graphics format developed by Google in 2010. It was created as an alternative to PNG and JPG and differs from them in much smaller size with the same image quality. Detailed information on the use of [here](https://vk.com/@vk_it-webp).
 
-## Контакты
+## Contacts
 
-- ВКонтакте: [@ndeviant](https://vk.com/ndeviant)
+- VK: [@ndeviant](https://vk.com/ndeviant)
 - Telegram: [@ndeviant](https://t-do.ru/ndeviant)
