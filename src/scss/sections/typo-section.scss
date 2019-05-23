@@ -1,3 +1,10 @@
 .typo-section {
 	padding: 30px 0;
+	background: #fff;
+
+	& &__container {
+		@include media-breakpoint-up(md) {
+			max-width: 700px;
+		}
+	}
 }
