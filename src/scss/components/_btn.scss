@@ -1,13 +1,13 @@
 .btn {
-	border-radius: $button-radius;
+	border-radius: $btn-border-radius;
 	border: none;
-	background-color: $dark-background;
+	background-color: $dark;
 	color: #fff;
 	padding: 10px 20px;
 	transition: background-color 0.3s;
 
 	&:hover {
-		background-color: lighten($dark-background, 10%);
+		background-color: lighten($dark, 10%);
 	}
 
 	&:focus {
