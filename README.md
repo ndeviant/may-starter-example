@@ -66,7 +66,7 @@ twig-bem-starter
 - Folder `src` - used during development:
   - fonts: `src/fonts`
   - images: `src/images`
-  - media files, to be deleted: `src/media`
+  - media files, wich will be deleted, after landing on CMS: `src/media`
   - JS files: `src/js`
   - SCSS files: `src/styles`
   - Twig files: `src/views`
@@ -88,7 +88,7 @@ twig-bem-starter
 - images are in the folder `src/images`
   - the image for generating favicons should be in the `src/images/` folder and have a size of at least `100px x 100px`.
   - icons from `src/images/svg` folder are collected in one svg sprite `dist/assets/images/sprite.svg`.
-  - pictures that will later be loaded from the CMS put in the folder `src/media`.
+  - pictures that are not part of the design, and will later be loaded from the CMS put in the folder `src/media`. Ex: post images, product pictures.
 - all third-party libraries are installing in the `node_modules` folder
   - to install another, use `yarn add [package_name]` command
   - to connect library JS files, import them into a BEM block JS file (that is, the BEM block that the script uses), for example:
@@ -106,6 +106,16 @@ Included in the starter auto-generated favicons. By default, the task starts wit
 ## WebP 
 
 Webp support is included in the starter. WebP is a graphics format developed by Google in 2010. It was created as an alternative to PNG and JPG and differs from them in much smaller size with the same image quality. Detailed information on the use of [here](https://vk.com/@vk_it-webp).
+
+## CMS
+
+Starter kit, is designed for CMS landing. Media folder for images, not to mix design images and images wich will be uploaded dynamically. Html is already splitted into chunks. Added couple of filter's to twig to land the frontend to the backend with pleasure:
+
+- `theme`: Use `theme` to specify path's for theme assets. Ex: `{{ "assets/images/sprite.svg#svg-logo" | theme }}`.
+- `media`: Use `media` to specify path's for media files. Reffers to the `dist/media` folder by default, so you shouldn't write a full path. Ex: `{{ "post1.jpg" | media }}`.
+- `page`: Just set the name of html page, without extension, to create a link to it. Ex: `href="{{ "blog" | page }}"`.
+
+You can just not use this filters, but I would reccomned you to. Also those filters was taken from OctoberCMS, so that would increadibly increase speed of your development for it. But they are also usefull for any other backend, cause those paths are always dymanic, and you can just search by files for filters, and change them to your needs.
 
 ## Contacts
 

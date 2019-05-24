@@ -45,7 +45,7 @@ $theme-colors: map-merge(
 // Full bootstrap grid
 // @import "bootstrap/scss/bootstrap-grid";
 
-// If you want to use only container's from bootstrap:
+// If you want to use only containers from bootstrap:
 // Src: https://github.com/twbs/bootstrap/blob/master/scss/_grid.scss
 
 @if $enable-grid-classes {
@@ -62,5 +62,5 @@ $theme-colors: map-merge(
 }
 
 // Below you can import other bootstrap components which you need.
-// Or you can just erase everything from `@import "bootstrap-reboot"`
+// Or you can just erase everything below `@import "bootstrap-reboot"`
 // and import full bootstrap package if you want.
