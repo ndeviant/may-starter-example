@@ -8,6 +8,7 @@
 - naming classes according to [BEM](https://ru.bem.info/)
 - using the template engine [twig](https://twig.symfony.com/)
 - using the preprocessor [SCSS](https://sass-lang.com/)
+- using the bootstrap grid [Bootstrap](https://getbootstrap.com/)
 - using the transpiler [Babel](https://babeljs.io/) to support modern JavaScript (ES6) in browsers
 - use [Webpack](https://webpack.js.org/) to build JavaScript modules
 
@@ -115,7 +116,7 @@ Starter kit, is designed for CMS landing. Media folder for images, not to mix de
 - `media`: Use `media` to specify path's for media files. Reffers to the `dist/media` folder by default, so you shouldn't write a full path. Ex: `{{ "post1.jpg" | media }}`.
 - `page`: Just set the name of html page, without extension, to create a link to it. Ex: `href="{{ "blog" | page }}"`.
 
-You can just not use this filters, but I would reccomned you to. Also those filters was taken from OctoberCMS, so that would increadibly increase speed of your development for it. But they are also usefull for any other backend, cause those paths are always dymanic, and you can just search by files for filters, and change them to your needs.
+You may simply not use these filters, but I would recommend it to you. Also, these filters were taken from OctoberCMS, so this will increase the speed of your development for it. But they are also useful for any other backend, because these paths are always dynamic, and you can simply search the filters for the files and change them according to your needs.
 
 ## Contacts
 
