@@ -3,7 +3,7 @@
 	width: 100%;
 	margin-bottom: 30px;
 
-	@include media-breakpoint-up(sm) {
+	@include media-up(sm) {
 		display: none;
 	}
 }
@@ -26,7 +26,7 @@
 	padding: 10px 15px;
 	flex-shrink: 0;
 
-	@include media-breakpoint-up(sm) {
+	@include media-up(sm) {
 		position: static;
 		transform: translateX(0);
 		height: auto;
@@ -36,13 +36,13 @@
 	// }
 
 	&--left {
-		@include media-breakpoint-up(sm) {
+		@include media-up(sm) {
 			margin-right: 20px;
 		}
 	}
 
 	&--right {
-		@include media-breakpoint-up(sm) {
+		@include media-up(sm) {
 			margin-left: 20px;
 		}
 	}

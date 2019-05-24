@@ -10,7 +10,7 @@
 		margin-bottom: 0;
 	}
 
-	@include media-breakpoint-up(lg) {
+	@include media-up(lg) {
 		flex-direction: row;
 	}
 
@@ -24,7 +24,7 @@
 		flex-shrink: 0;
 		overflow: hidden;
 
-		@include media-breakpoint-up(lg) {
+		@include media-up(lg) {
 			width: 300px;
 			height: auto;
 		}
