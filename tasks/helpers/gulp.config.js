@@ -15,7 +15,7 @@ root.assets = userOptions.root.assets || `${root.dist}/assets`;
 
 /**
  * Bsync config:
- * Disables online, unless tunnel is on, for better performanse;
+ * Disables online, unless tunnel is on, for better performance;
  */
 
 const bsyncConfig = {

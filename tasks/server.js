@@ -5,9 +5,11 @@ import { favs } from "./favs";
 import { images } from "./images";
 import { scripts } from "./scripts";
 import { styles } from "./styles";
+import { fonts } from "./fonts";
 import { svg } from "./svg";
 import { views } from "./views";
 import { webp } from "./webp";
+import { media } from "./media";
 
 import { config } from "./helpers/gulp.config";
 
@@ -36,12 +38,20 @@ const server = () => {
 		gulp.watch(tasks.webp.watch, webp);
 	}
 
+	if (tasks.fonts.run) {
+		gulp.watch(tasks.fonts.watch, fonts);
+	}
+
 	if (tasks.favs.run) {
 		gulp.watch(tasks.favs.watch, favs);
 	}
 
 	if (tasks.svg.run) {
 		gulp.watch(tasks.svg.watch, svg);
+	}
+
+	if (tasks.media.run) {
+		gulp.watch(tasks.media.watch, media);
 	}
 };
 
