@@ -43,9 +43,6 @@ const browserSync = {};
  *		@param	{Object} options	- Default options.
  * 		@return {Object} 					- Object with modified fields.
  *
- *	Note, that, it's recommended to disable `favs` task, by setting `run: false`,
- *	after you've created favicons, cause of performance considerations.
- *
  */
 
 const tasks = {

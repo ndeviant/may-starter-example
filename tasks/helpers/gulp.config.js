@@ -172,7 +172,7 @@ favs = {
 
 let svg = {
 	src: `${root.src}/images/svg/**/*.svg`,
-	dist: `${root.assets}/images/`,
+	dist: `${root.src}/images/`,
 	run: true,
 };
 

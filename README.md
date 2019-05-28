@@ -36,6 +36,7 @@ twig-bem-starter
 ├── src
 │   ├── fonts
 │   ├── images
+│   │   ├── favicons
 │   │   └── svg
 │   ├── media
 │   ├── js
@@ -67,6 +68,8 @@ twig-bem-starter
 - Folder `src` - used during development:
   - fonts: `src/fonts`
   - images: `src/images`
+    - favicons, generated from `src/images/favicon.{img}`: `src/images/favicons`
+    - svg sprite, generated from `src/images/svg/**/*.{svg}`: `src/images/sprite.svg`
   - media files, wich will be deleted, after landing on CMS: `src/media`
   - JS files: `src/js`
   - SCSS files: `src/styles`
@@ -87,8 +90,8 @@ twig-bem-starter
   - main page: `src/views/pages/index.htm`
 - fonts are in `src/fonts` folder, use `ttf`, `woff` and `woof2` formats
 - images are in the folder `src/images`
-  - the image for generating favicons should be in the `src/images/` folder and have a size of at least `100px x 100px`.
-  - icons from `src/images/svg` folder are collected in one svg sprite `dist/assets/images/sprite.svg`.
+  - the image for generating favicons should be in the `src/images/` folder and have a size of at least `100px x 100px`. Favicons will be generated to `src/images/favicons`, for better performance better to disable `favs` task, after you generated your favicons.
+  - icons from `src/images/svg` folder are collected in one svg sprite at `src/images/sprite.svg`.
   - pictures that are not part of the design, and will later be loaded from the CMS put in the folder `src/media`. Ex: post images, product pictures.
 - all third-party libraries are installing in the `node_modules` folder
   - to install another, use `yarn add [package_name]` command
