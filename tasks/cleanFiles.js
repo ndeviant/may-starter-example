@@ -4,14 +4,9 @@ import debug from "gulp-debug";
 
 import { config } from "./helpers/gulp.config";
 
-const path = [
-	`${config.root.dist}/*.{html, htaccess}`,
-	`${config.root.dist}/assets/*`,
-];
-
 const cleanFiles = () =>
 	gulp
-		.src(path, {
+		.src(config.tasks.cleanFiles.src, {
 			read: false,
 		})
 		.pipe(clean())

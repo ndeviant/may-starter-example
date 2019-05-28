@@ -1,4 +1,5 @@
 import { options as userOptions } from "../../gulp.options";
+import { resolveFunction } from "./resolveFunction";
 
 /**
  * Root paths:
@@ -35,136 +36,183 @@ const bsyncConfig = {
  *  Clean files
  */
 
-const cleanFiles = {
+let cleanFiles = {
+	src: [`${root.dist}/*.{html, htaccess}`, `${root.dist}/assets/*`],
 	run: true,
-	...userOptions.tasks.cleanFiles,
+};
+
+cleanFiles = {
+	...cleanFiles,
+	...resolveFunction(userOptions.tasks.cleanFiles, cleanFiles),
 };
 
 /**
  * Views
  */
 
-const views = {
+let views = {
 	src: [`${root.src}/views/pages/*.htm`],
 	dist: root.dist,
-	watch: [`${root.src}/components/**/*.htm`, `${root.src}/views/**/*.htm`],
+	watch: `${root.src}/views/**/*.htm`,
 	run: true,
-	...userOptions.tasks.views,
+};
+
+views = {
+	...views,
+	...resolveFunction(userOptions.tasks.views, views),
 };
 
 /**
  * Styles
  */
 
-const styles = {
+let styles = {
 	src: `${root.src}/scss/main.scss`,
 	dist: `${root.assets}/css/`,
-	watch: [`${root.src}/components/**/*.scss`, `${root.src}/scss/**/*.scss`],
+	watch: `${root.src}/scss/**/*.scss`,
 	run: true,
-	...userOptions.tasks.styles,
+};
+
+styles = {
+	...styles,
+	...resolveFunction(userOptions.tasks.styles, styles),
 };
 
 /**
  * Scripts
  */
 
-const scripts = {
+let scripts = {
 	src: `${root.src}/js/index.js`,
 	dist: `${root.assets}/js/`,
-	watch: [`${root.src}/components/**/*.js`, `${root.src}/js/**/*.js`],
+	watch: `${root.src}/js/**/*.js`,
 	run: true,
-	...userOptions.tasks.scripts,
+};
+
+scripts = {
+	...scripts,
+	...resolveFunction(userOptions.tasks.scripts, scripts),
 };
 
 /**
  * Images
  */
 
-const images = {
+let images = {
 	src: [
 		`${root.src}/images/**/*.{jpg,jpeg,png,gif,svg}`,
-		`!${root.src}/images/svg/*.svg`,
+		`!${root.src}/images/svg/**/*.svg`,
 		`!${root.src}/images/favicon.{jpg,jpeg,png,gif,svg}`,
 	],
 	dist: `${root.dist}/assets/images/`,
 	run: true,
-	...userOptions.tasks.images,
 };
 
-images.watch = userOptions.tasks.images.watch || images.src;
+images.watch = images.src;
+
+images = {
+	...images,
+	...resolveFunction(userOptions.tasks.images, images),
+};
 
 /**
  * WebP
  */
 
-const webp = {
+let webp = {
 	src: `${root.src}/images/**/*_webp.{jpg,jpeg,png}`,
 	dist: `${root.assets}/images/`,
 	run: true,
-	...userOptions.tasks.webp,
 };
 
-webp.watch = userOptions.tasks.webp.watch || webp.src;
+webp.watch = webp.src;
+
+webp = {
+	...webp,
+	...resolveFunction(userOptions.tasks.webp, webp),
+};
 
 /**
  * Fonts
  */
 
-const fonts = {
+let fonts = {
 	src: `${root.src}/fonts/**/*.{ttf,otf,woff,woff2}`,
 	dist: `${root.assets}/fonts/`,
 	run: true,
-	...userOptions.tasks.fonts,
 };
 
-fonts.watch = userOptions.tasks.fonts.watch || fonts.src;
+fonts.watch = fonts.src;
+
+fonts = {
+	...fonts,
+	...resolveFunction(userOptions.tasks.fonts, fonts),
+};
 
 /**
  * Favs
  */
 
-const favs = {
+let favs = {
 	src: `${root.src}/images/favicon.{jpg,jpeg,png,gif,svg}`,
 	dist: `${root.assets}/images/favicons/`,
 	run: true,
-	...userOptions.tasks.favs,
 };
 
-favs.watch = userOptions.tasks.favs.watch || favs.src;
+favs.watch = favs.src;
+
+favs = {
+	...favs,
+	...resolveFunction(userOptions.tasks.favs, favs),
+};
 
 /**
  * Svg
  */
 
-const svg = {
-	src: `${root.src}/images/svg/*.svg`,
+let svg = {
+	src: `${root.src}/images/svg/**/*.svg`,
 	dist: `${root.assets}/images/`,
 	run: true,
-	...userOptions.tasks.svg,
 };
 
-svg.watch = userOptions.tasks.svg.watch || svg.src;
+svg.watch = svg.src;
+
+svg = {
+	...svg,
+	...resolveFunction(userOptions.tasks.svg, svg),
+};
 
 /**
  * Media
  */
 
-const media = {
+let media = {
 	src: `${root.src}/media/**/*`,
 	dist: `${root.assets}/media/`,
 	run: true,
-	...userOptions.tasks.media,
+};
+
+media.watch = media.src;
+
+media = {
+	...media,
+	...resolveFunction(userOptions.tasks.media, media),
 };
 
 /**
  * Htaccess
  */
 
-const htaccess = {
+let htaccess = {
 	src: `${root.src}/.htaccess`,
 	dist: root.dist,
 	run: true,
-	...userOptions.tasks.fonts,
+};
+
+htaccess = {
+	...htaccess,
+	...resolveFunction(userOptions.tasks.htaccess, htaccess),
 };
 
 /**

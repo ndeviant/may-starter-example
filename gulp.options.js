@@ -12,6 +12,7 @@
  * @property 	{string}	src 		- The path to source files of you project, defaults to `./src`.
  * @property 	{string}	dist 		- The path where to place compiled files, defaults to `./dist`.
  * @property 	{string}	assets 	- The path for assets, defaults to `${root.dist}/assets`.
+ *
  */
 
 const root = {};
@@ -21,6 +22,7 @@ const root = {};
  * BrowserSync
  *
  * @typedef		{Object}	browserSync	- Docs: browsersync.io/docs/options
+ *
  */
 
 const browserSync = {};
@@ -30,11 +32,17 @@ const browserSync = {};
  * Tasks
  *
  * @typedef	{Object}	tasks - Each prop is reffering to existing task.
- * @property	{Object}	[task]	- Any task.
+ *
+ * @property	{Object}	[task]	- Any task, could be an object, or a function.
  *	 @property	{bool}		run		- Disable any task, by setting this to false.
  *	 @property	{string}	src		- Where to get specific files for the task, by default starts from `root.src`.
  *	 @property	{string}	dist	- Where to place compiled files, by default starts from `root.dist`.
  *	 @property	{string}	watch	- Which files should gulp watch, by default starts from `root.src`.
+ *
+ * @property	{function} [task] - Any task, as a function.
+ *		@param	{Object} options	- Object with default options.
+ * 		@return {Object} 					- Object with modified fields.
+ *
  */
 
 const tasks = {
