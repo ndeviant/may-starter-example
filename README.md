@@ -102,7 +102,7 @@ The build collects all svgs from the `src/images/svg` folder into a single sprit
 
 ## Favicon
 
-Included in the starter auto-generated favicons. By default, the task starts with the Assembly, but you can turn it off by configuration file by setting it to `run: false` and generate favicons directly to `src/images/favicons` folder with `gulp favs --toSrc` command.
+In the starter included auto-generation of favicons. By default, the task generates favicons to `src/images/favicons` folder. This task takes a lot of time, so its recommended to turn it off in configuration file by setting it to `run: false`, after you've already created a favicons for the first time.
 
 ## WebP 
 
@@ -116,7 +116,7 @@ Starter kit, is designed for CMS landing. Media folder for images, not to mix de
 - `media`: Use `media` to specify path's for media files. Reffers to the `dist/media` folder by default, so you shouldn't write a full path. Ex: `{{ "post1.jpg" | media }}`.
 - `page`: Just set the name of html page, without extension, to create a link to it. Ex: `href="{{ "blog" | page }}"`.
 
-You may simply not use these filters, but I would recommend it to you. Also, these filters were taken from OctoberCMS, so this will increase the speed of your development for it. But they are also useful for any other backend, because these paths are always dynamic, and you can simply search the filters for the files and change them according to your needs.
+You may simply not use these filters, but I would recommend you to. Also, these filters were "mocked" from OctoberCMS, so this will increase the speed of your development for it. But they are also useful for any other backend, because these paths are always dynamic, and you can simply search for those filters through files and change them according to your needs.
 
 ## Contacts
 

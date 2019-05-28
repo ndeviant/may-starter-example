@@ -1,12 +1,8 @@
 import gulp from "gulp";
 import debug from "gulp-debug";
 import favicons from "gulp-favicons";
-import { argv } from "yargs";
 
 import { config } from "./helpers/gulp.config";
-
-const { toSrc } = argv;
-const srcPath = `${config.root.src}/images/favicons/`;
 
 const favs = () =>
 	gulp
@@ -27,7 +23,7 @@ const favs = () =>
 				},
 			}),
 		)
-		.pipe(gulp.dest(toSrc ? srcPath : config.tasks.favs.dist))
+		.pipe(gulp.dest(config.tasks.favs.dist))
 		.pipe(
 			debug({
 				title: "Favicons",

@@ -155,7 +155,7 @@ fonts = {
 
 let favs = {
 	src: `${root.src}/images/favicon.{jpg,jpeg,png,gif,svg}`,
-	dist: `${root.assets}/images/favicons/`,
+	dist: `${root.src}/images/favicons/`,
 	run: true,
 };
 
