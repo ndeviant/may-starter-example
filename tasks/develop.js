@@ -22,16 +22,19 @@ const activeTasks = [
 	tasks.scripts.run ? scripts : false,
 	tasks.images.run ? images : false,
 	tasks.webp.run ? webp : false,
+	tasks.fonts.run ? fonts : false,
+].filter(Boolean);
+
+const additionalTasks = [
 	tasks.favs.run ? favs : false,
 	tasks.svg.run ? svg : false,
-	tasks.fonts.run ? fonts : false,
 	tasks.media.run ? media : false,
 ].filter(Boolean);
 
 const develop = gulp.series(
 	cleanFiles,
 	gulp.parallel(...activeTasks),
-	gulp.parallel(server),
+	gulp.parallel(server, ...additionalTasks),
 );
 
 export { develop };
