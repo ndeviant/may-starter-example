@@ -57,7 +57,8 @@
 		"sort-css-media-queries": "^1.4.3",
 		"stylelint": "^10.0.1",
 		"stylelint-config-prettier": "^5.2.0",
-		"stylelint-config-standard": "^18.3.0",
+		"stylelint-config-recommended-scss": "^3.3.0",
+		"stylelint-scss": "^3.6.1",
 		"webpack": "^4.31.0",
 		"webpack-stream": "^5.2.1",
 		"yargs": "^13.2.4"
