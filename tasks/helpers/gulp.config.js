@@ -51,7 +51,7 @@ cleanFiles = {
  */
 
 let views = {
-	src: [`${root.src}/views/pages/*.htm`],
+	src: `${root.src}/views/pages/*.htm`,
 	dist: root.dist,
 	watch: `${root.src}/views/**/*.htm`,
 	run: true,
@@ -133,23 +133,6 @@ webp = {
 };
 
 /**
- * Fonts
- */
-
-let fonts = {
-	src: `${root.src}/fonts/**/*.{ttf,otf,woff,woff2}`,
-	dist: `${root.assets}/fonts/`,
-	run: true,
-};
-
-fonts.watch = fonts.src;
-
-fonts = {
-	...fonts,
-	...resolveFunction(userOptions.tasks.fonts, fonts),
-};
-
-/**
  * Favs
  */
 
@@ -184,20 +167,31 @@ svg = {
 };
 
 /**
- * Media
+ * Other assets
  */
 
-let media = {
-	src: `${root.src}/media/**/*`,
-	dist: `${root.assets}/media/`,
+let assets = {
+	src: [
+		`${root.src}/**/*`,
+		`!${root.src}/views`,
+		`!${root.src}/views/**/*`,
+		`!${root.src}/scss`,
+		`!${root.src}/scss/**/*`,
+		`!${root.src}/js`,
+		`!${root.src}/js/**/*`,
+		`!${root.src}/images`,
+		`!${root.src}/images/**/*`,
+		`!${root.src}/.htaccess`,
+	],
+	dist: root.assets,
 	run: true,
 };
 
-media.watch = media.src;
+assets.watch = assets.src;
 
-media = {
-	...media,
-	...resolveFunction(userOptions.tasks.media, media),
+assets = {
+	...assets,
+	...resolveFunction(userOptions.tasks.assets, assets),
 };
 
 /**
@@ -226,10 +220,9 @@ const tasks = {
 	scripts,
 	images,
 	webp,
-	fonts,
 	favs,
 	svg,
-	media,
+	assets,
 	htaccess,
 };
 

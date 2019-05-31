@@ -2,14 +2,13 @@ import gulp from "gulp";
 
 import { cleanFiles } from "./cleanFiles";
 import { favs } from "./favs";
-import { fonts } from "./fonts";
 import { images } from "./images";
 import { scripts } from "./scripts";
 import { styles } from "./styles";
 import { svg } from "./svg";
 import { views } from "./views";
 import { webp } from "./webp";
-import { media } from "./media";
+import { assets } from "./assets";
 import { server } from "./server";
 
 import { config } from "./helpers/gulp.config";
@@ -22,13 +21,12 @@ const activeTasks = [
 	tasks.scripts.run ? scripts : false,
 	tasks.images.run ? images : false,
 	tasks.webp.run ? webp : false,
-	tasks.fonts.run ? fonts : false,
+	tasks.assets.run ? assets : false,
 ].filter(Boolean);
 
 const additionalTasks = [
 	tasks.favs.run ? favs : false,
 	tasks.svg.run ? svg : false,
-	tasks.media.run ? media : false,
 ].filter(Boolean);
 
 const develop = gulp.series(

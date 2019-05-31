@@ -4,15 +4,15 @@ import changed from "gulp-changed";
 
 import { config } from "./helpers/gulp.config";
 
-const media = () =>
+const assets = () =>
 	gulp
-		.src(config.tasks.media.src)
-		.pipe(changed(config.tasks.media.dist))
-		.pipe(gulp.dest(config.tasks.media.dist))
+		.src(config.tasks.assets.src)
+		.pipe(changed(config.tasks.assets.dist))
+		.pipe(gulp.dest(config.tasks.assets.dist))
 		.pipe(
 			debug({
-				title: "Media",
+				title: "Assets",
 			}),
 		);
 
-export { media };
+export { assets };

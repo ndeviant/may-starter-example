@@ -55,8 +55,7 @@ const tasks = {
 	webp: {},
 	favs: {},
 	svg: {},
-	fonts: {},
-	media: {},
+	assets: {},
 };
 
 const options = {
