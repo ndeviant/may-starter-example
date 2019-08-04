@@ -1,16 +1,15 @@
-![twig-bem-starter](https://i.imgur.com/hr5WwqN.png)
+![may-starter](https://i.imgur.com/hr5WwqN.png)
 
-![Version](https://img.shields.io/github/package-json/v/ndeviant/twig-bem-starter?style=for-the-badge)
-![Dependencies](https://img.shields.io/david/ndeviant/twig-bem-starter?style=for-the-badge)
-![Activity](https://img.shields.io/github/last-commit/ndeviant/twig-bem-starter?style=for-the-badge)
+![Version](https://img.shields.io/github/package-json/v/ndeviant/may-starter?style=for-the-badge)
+![Dependencies](https://img.shields.io/david/ndeviant/may-starter?style=for-the-badge)
+![Activity](https://img.shields.io/github/last-commit/ndeviant/may-starter?style=for-the-badge)
 
-![License](https://img.shields.io/github/license/ndeviant/twig-bem-starter?style=for-the-badge)
-![Eslint](https://img.shields.io/github/package-json/dependency-version/ndeviant/twig-bem-starter/dev/eslint?style=for-the-badge)
-![Prettier](https://img.shields.io/github/package-json/dependency-version/ndeviant/twig-bem-starter/dev/prettier?color=%232DD&style=for-the-badge)
-![Stylelint](https://img.shields.io/github/package-json/dependency-version/ndeviant/twig-bem-starter/dev/stylelint?color=%23D2D&style=for-the-badge)
+![License](https://img.shields.io/github/license/ndeviant/may-starter?style=for-the-badge)
+![Eslint](https://img.shields.io/github/package-json/dependency-version/ndeviant/may-starter/dev/eslint?style=for-the-badge)
+![Prettier](https://img.shields.io/github/package-json/dependency-version/ndeviant/may-starter/dev/prettier?color=%232DD&style=for-the-badge)
+![Stylelint](https://img.shields.io/github/package-json/dependency-version/ndeviant/may-starter/dev/stylelint?color=%23D2D&style=for-the-badge)
 
-
-# twig-bem-starter
+# May Starter
 
 ## Features
 
@@ -28,9 +27,9 @@
 
 > Yarn is a modern alternative to npm. Yarn works with the same `package.json` file and also downloads the necessary modules to the `node_modules` folder, but does it much faster.
 
-- download the build: `git clone https://github.com/ndeviant/twig-bem-starter.git`
+- download the build: `git clone https://github.com/ndeviant/may-starter.git`
 - install`gulp` globally: `yarn global add gulp-cli`
-- go to the downloaded folder with the build:`cd twig-bem-starter`
+- go to the downloaded folder with the build:`cd may-starter`
 - download the necessary dependencies: `yarn`
 - to get started, enter the command:`yarn start` (development mode)
 - to build a project, enter the command `yarn build` (build mode)
@@ -41,7 +40,7 @@ The build mode implies project optimization: image compression, minification of 
 ## File structure
 
 ```
-twig-bem-starter
+may-starter
 ├── dist
 ├── src
 │   ├── fonts
