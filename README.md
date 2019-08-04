@@ -1,4 +1,4 @@
-![twig-bem-starter](https://i.imgur.com/0AG0txq.png)
+![twig-bem-starter](https://i.imgur.com/hr5WwqN.png)
 
 ![Version](https://img.shields.io/github/package-json/v/ndeviant/twig-bem-starter?style=for-the-badge)
 ![Dependencies](https://img.shields.io/david/ndeviant/twig-bem-starter?style=for-the-badge)
