@@ -1,4 +1,14 @@
-![twig-bem-starter](https://i.imgur.com/0AG0txq.png)
+![twig-bem-starter](https://i.imgur.com/hr5WwqN.png)
+
+![Version](https://img.shields.io/github/package-json/v/ndeviant/twig-bem-starter?style=for-the-badge)
+![Dependencies](https://img.shields.io/david/ndeviant/twig-bem-starter?style=for-the-badge)
+![Activity](https://img.shields.io/github/last-commit/ndeviant/twig-bem-starter?style=for-the-badge)
+
+![License](https://img.shields.io/github/license/ndeviant/twig-bem-starter?style=for-the-badge)
+![Eslint](https://img.shields.io/github/package-json/dependency-version/ndeviant/twig-bem-starter/dev/eslint?style=for-the-badge)
+![Prettier](https://img.shields.io/github/package-json/dependency-version/ndeviant/twig-bem-starter/dev/prettier?color=%232DD&style=for-the-badge)
+![Stylelint](https://img.shields.io/github/package-json/dependency-version/ndeviant/twig-bem-starter/dev/stylelint?color=%23D2D&style=for-the-badge)
+
 
 # twig-bem-starter
 
